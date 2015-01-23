@@ -1,0 +1,25 @@
+From e9f8ce0e29a02628ecd68d441a8b89b54c842509 Mon Sep 17 00:00:00 2001
+From: Alberto Murillo <alberto.murillo.silva@intel.com>
+Date: Thu, 10 Mar 2016 10:55:25 -0600
+Subject: [PATCH] Move rootwrap location
+
+---
+ etc/nova/rootwrap.conf | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/etc/nova/rootwrap.conf b/etc/nova/rootwrap.conf
+index c6fd564..c70496b 100644
+--- a/etc/nova/rootwrap.conf
++++ b/etc/nova/rootwrap.conf
+@@ -4,7 +4,7 @@
+ [DEFAULT]
+ # List of directories to load filter definitions from (separated by ',').
+ # These directories MUST all be only writeable by root !
+-filters_path=/etc/nova/rootwrap.d,/usr/share/nova/rootwrap
++filters_path=/usr/share/nova/rootwrap.d
+ 
+ # List of directories to search executables in, in case filters do not
+ # explicitly specify a full path (separated by ',')
+-- 
+2.5.0
+

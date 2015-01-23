@@ -1,0 +1,12 @@
+#0001-autoload-nbd-on-boot.patch
+#0002-Nova-sudoers-entry.patch
+#0003-Change-dnsmasq-binary-location.patch
+#0004-default-config.patch
+#0005-Move-rootwrap-location.patch
+#0010-Remove-e2fsck-instruction.patch
+#0011-Avoid-extend-image-process.patch
+#0012-Avoid-qemu-img-resize.patch
+#0013-Add-nova-docker-configuration-file.patch
+#0014-Add-support-to-httdp-and-nginx.patch
+#0015-Add-support-to-lkvm-hypervisor.patch
+#0016-Use-our-default-usr-share-qemu-OVMF.fd.patch

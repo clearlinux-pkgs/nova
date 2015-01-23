@@ -1,0 +1,33 @@
+#install -d -m 755 %{buildroot}/usr/share/defaults/nova
+#install -p -D -m 644 etc/nova/*.conf %{buildroot}/usr/share/defaults/nova/
+#install -p -D -m 644 etc/nova/*.ini %{buildroot}/usr/share/defaults/nova/
+#install -p -D -m 644 etc/nova/*.json %{buildroot}/usr/share/defaults/nova/
+#
+#install -d -m 755 %{buildroot}/usr/share/defaults/nova/
+#install -p -D -m 644 etc/nova/nova.conf.sample %{buildroot}/usr/share/defaults/nova/nova.conf
+#install -p -D -m 644 etc/nova/nova-docker.conf.sample %{buildroot}/usr/share/defaults/nova/nova-docker.conf
+#install -p -D -m 644 etc/nova/nova-lkvm.conf.sample %{buildroot}/usr/share/defaults/nova/nova-lkvm.conf
+#
+#install -d -m 755 %{buildroot}/usr/share/nova/rootwrap.d
+##mv %{buildroot}/usr/share/defaults/nova/rootwrap.conf %{buildroot}/usr/share/nova/
+#install -p -D -m 640 etc/nova/rootwrap.d/*.filters %{buildroot}/usr/share/nova/rootwrap.d/
+#
+#install -d -m 750 %{buildroot}/usr/share/defaults/sudo/sudoers.d
+#install -p -D -m 440 etc/sudoers.d/nova.sudoers %{buildroot}/usr/share/defaults/sudo/sudoers.d/nova
+#
+#install -d -m 755 %{buildroot}/usr/lib/modules-load.d/
+#install -p -D -m 640 nbd.conf %{buildroot}/usr/lib/modules-load.d/
+#
+#install -m 0755 -d %{buildroot}/usr/share/httpd/cgi-bin/nova
+#cp nova/wsgi/*.py %{buildroot}/usr/share/httpd/cgi-bin/nova
+#
+#install -m 0755 -d %{buildroot}/usr/share/defaults/httpd/conf.d
+##install -p -D -m 644 nova/wsgi/nova-api-metadata.httpd %{buildroot}/usr/share/defaults/httpd/conf.d/nova-api-metadata.conf
+#install -p -D -m 644 nova/wsgi/nova-api.httpd  %{buildroot}/usr/share/defaults/httpd/conf.d/nova-api.template
+#
+#install -m 0755 -d %{buildroot}/usr/share/uwsgi/nova
+#cp nova/wsgi/*.ini %{buildroot}/usr/share/uwsgi/nova
+#
+#install -m 0755 -d %{buildroot}/usr/share/nginx/conf.d
+#install -p -D -m 644 nova/wsgi/nova-api-metadata.nginx %{buildroot}/usr/share/nginx/conf.d/nova-api-metadata.conf
+#install -p -D -m 644 nova/wsgi/nova-api.nginx %{buildroot}/usr/share/nginx/conf.d/nova-api.template

@@ -1,0 +1,8 @@
+Z /etc/nova/* 0640 root nova
+z /etc/nova 0750 root nova
+d /var/lib/nova - nova nova - -
+d /var/lib/nova/CA - nova nova - -
+d /var/lib/nova/instances - nova nova - -
+d /var/lib/nova/keys - nova nova - -
+d /run/lock/nova - nova nova - -
+f /run/lock/nova/nova-iptables - nova nova - -

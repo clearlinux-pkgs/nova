@@ -1,0 +1,50 @@
+From 3c94843ed9a62b6935374524fe6c70200b246515 Mon Sep 17 00:00:00 2001
+From: Victor Morales <victor.morales@intel.com>
+Date: Wed, 30 Sep 2015 12:17:26 -0500
+Subject: [PATCH] Add nova-docker configuration file
+
+Signed-off-by: Munoz, Obed N <obed.n.munoz@intel.com>
+---
+ etc/nova/nova-docker.conf.sample | 30 ++++++++++++++++++++++++++++++
+ 1 file changed, 30 insertions(+)
+ create mode 100644 etc/nova/nova-docker.conf.sample
+
+diff --git a/etc/nova/nova-docker.conf.sample b/etc/nova/nova-docker.conf.sample
+new file mode 100644
+index 0000000..20a046c
+--- /dev/null
++++ b/etc/nova/nova-docker.conf.sample
+@@ -0,0 +1,30 @@
++[DEFAULT]
++
++# Name of this node.  This can be an opaque identifier.  It is
++# not necessarily a hostname, FQDN, or IP address. However,
++# the node name must be valid within an AMQP key, and if using
++# ZeroMQ, a valid hostname, FQDN, or IP address (string value)
++host = nova-docker
++
++# Top-level directory for maintaining nova's state (string
++# value)
++state_path = /var/lib/nova-docker
++
++# Driver to use for controlling virtualization. Options
++# include: libvirt.LibvirtDriver, xenapi.XenAPIDriver,
++# fake.FakeDriver, baremetal.BareMetalDriver,
++# vmwareapi.VMwareVCDriver, hyperv.HyperVDriver (string value)
++compute_driver = novadocker.virt.docker.DockerDriver
++
++# Firewall driver (defaults to hypervisor specific iptables
++# driver) (string value)
++firewall_driver = nova.virt.firewall.NoopFirewallDriver
++
++# Enable periodic tasks (boolean value)
++periodic_enable = False
++
++log_dir = /var/log/nova/
++
++[oslo_concurrency]
++
++lock_path = /run/lock/nova-docker
+-- 
+2.1.0
+

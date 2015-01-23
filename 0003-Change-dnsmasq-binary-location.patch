@@ -1,0 +1,40 @@
+From b9ef1784dee8bea81e5526ee22f9f7017601f5f6 Mon Sep 17 00:00:00 2001
+From: "Munoz, Obed N" <obed.n.munoz@intel.com>
+Date: Wed, 18 Mar 2015 16:07:34 -0600
+Subject: [PATCH] Change dnsmasq binary location
+
+Signed-off-by: Munoz, Obed N <obed.n.munoz@intel.com>
+---
+ etc/nova/rootwrap.d/compute.filters | 2 +-
+ etc/nova/rootwrap.d/network.filters | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/etc/nova/rootwrap.d/compute.filters b/etc/nova/rootwrap.d/compute.filters
+index 4d35d4f..5ccceb3 100644
+--- a/etc/nova/rootwrap.d/compute.filters
++++ b/etc/nova/rootwrap.d/compute.filters
+@@ -132,7 +132,7 @@ dhcp_release: CommandFilter, dhcp_release, root
+ 
+ # nova/network/linux_net.py: 'kill', '-9', pid
+ # nova/network/linux_net.py: 'kill', '-HUP', pid
+-kill_dnsmasq: KillFilter, root, /usr/sbin/dnsmasq, -9, -HUP
++kill_dnsmasq: KillFilter, root, /usr/bin/dnsmasq, -9, -HUP
+ 
+ # nova/network/linux_net.py: 'kill', pid
+ kill_radvd: KillFilter, root, /usr/sbin/radvd
+diff --git a/etc/nova/rootwrap.d/network.filters b/etc/nova/rootwrap.d/network.filters
+index 568e8d4..488e291 100644
+--- a/etc/nova/rootwrap.d/network.filters
++++ b/etc/nova/rootwrap.d/network.filters
+@@ -70,7 +70,7 @@ dhcp_release: CommandFilter, dhcp_release, root
+ 
+ # nova/network/linux_net.py: 'kill', '-9', pid
+ # nova/network/linux_net.py: 'kill', '-HUP', pid
+-kill_dnsmasq: KillFilter, root, /usr/sbin/dnsmasq, -9, -HUP
++kill_dnsmasq: KillFilter, root, /usr/bin/dnsmasq, -9, -HUP
+ 
+ # nova/network/linux_net.py: 'kill', pid
+ kill_radvd: KillFilter, root, /usr/sbin/radvd
+-- 
+2.3.3
+

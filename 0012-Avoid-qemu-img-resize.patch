@@ -1,0 +1,30 @@
+From 2c6932ca561b581389ebb89fe8188c73cfdea7f6 Mon Sep 17 00:00:00 2001
+From: Alberto Murillo <alberto.murillo.silva@intel.com>
+Date: Wed, 30 Sep 2015 12:11:06 -0500
+Subject: [PATCH] Avoid qemu-img resize
+
+Signed-off-by: Munoz, Obed N <obed.n.munoz@intel.com>
+---
+ nova/virt/libvirt/imagebackend.py | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
+
+diff --git a/nova/virt/libvirt/imagebackend.py b/nova/virt/libvirt/imagebackend.py
+index 800767b..5e9148d 100644
+--- a/nova/virt/libvirt/imagebackend.py
++++ b/nova/virt/libvirt/imagebackend.py
+@@ -519,10 +519,8 @@ class Qcow2(Image):
+             # TODO(pbrady): Consider copying the cow image here
+             # with preallocation=metadata set for performance reasons.
+             # This would be keyed on a 'preallocate_images' setting.
+-            libvirt_utils.create_cow_image(base, target)
+-            if size:
+-                image = imgmodel.LocalFileImage(target, imgmodel.FORMAT_QCOW2)
+-                disk.extend(image, size)
++            libvirt_utils.create_cow_image(base, target, size)
++            image = imgmodel.LocalFileImage(target, imgmodel.FORMAT_QCOW2)
+ 
+         # Download the unmodified base image unless we already have a copy.
+         if not os.path.exists(base):
+-- 
+2.6.0
+

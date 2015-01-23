@@ -1,0 +1,25 @@
+From fbffc5b8b0513d73262d5fd018fa2f513b644326 Mon Sep 17 00:00:00 2001
+From: "Simental Magana, Marcos" <marcos.simental.magana@intel.com>
+Date: Thu, 28 Apr 2016 15:54:01 -0500
+Subject: [PATCH] Use our default /usr/share/qemu/OVMF.fd
+
+---
+ nova/virt/libvirt/driver.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/nova/virt/libvirt/driver.py b/nova/virt/libvirt/driver.py
+index 3dce659..53e6926 100644
+--- a/nova/virt/libvirt/driver.py
++++ b/nova/virt/libvirt/driver.py
+@@ -334,7 +334,7 @@ DEFAULT_FIREWALL_DRIVER = "%s.%s" % (
+     libvirt_firewall.IptablesFirewallDriver.__name__)
+ 
+ DEFAULT_UEFI_LOADER_PATH = {
+-    "x86_64": "/usr/share/OVMF/OVMF_CODE.fd",
++    "x86_64": "/usr/share/qemu/OVMF.fd",
+     "aarch64": "/usr/share/AAVMF/AAVMF_CODE.fd"
+ }
+ 
+-- 
+2.4.11
+
