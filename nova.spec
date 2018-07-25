@@ -6,7 +6,7 @@
 #
 Name     : nova
 Version  : 15.1.3
-Release  : 142
+Release  : 143
 URL      : http://tarballs.openstack.org/nova/nova-15.1.3.tar.gz
 Source0  : http://tarballs.openstack.org/nova/nova-15.1.3.tar.gz
 Source1  : nova.tmpfiles
