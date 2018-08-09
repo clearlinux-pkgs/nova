@@ -5,18 +5,18 @@
 # Source0 file verified with key 0xC36CDCB4DF00C68C (infra-root@openstack.org)
 #
 Name     : nova
-Version  : 15.1.3
-Release  : 143
-URL      : http://tarballs.openstack.org/nova/nova-15.1.3.tar.gz
-Source0  : http://tarballs.openstack.org/nova/nova-15.1.3.tar.gz
+Version  : 17.0.5
+Release  : 144
+URL      : http://tarballs.openstack.org/nova/nova-17.0.5.tar.gz
+Source0  : http://tarballs.openstack.org/nova/nova-17.0.5.tar.gz
 Source1  : nova.tmpfiles
-Source99 : http://tarballs.openstack.org/nova/nova-15.1.3.tar.gz.asc
+Source99 : http://tarballs.openstack.org/nova/nova-17.0.5.tar.gz.asc
 Summary  : Cloud computing fabric controller
 Group    : Development/Tools
 License  : Apache-2.0
 Requires: nova-bin
-Requires: nova-python3
 Requires: nova-config
+Requires: nova-python3
 Requires: nova-license
 Requires: nova-python
 Requires: Babel
@@ -40,7 +40,9 @@ Requires: lxml
 Requires: netaddr
 Requires: netifaces
 Requires: os-brick
+Requires: os-service-types
 Requires: os-win
+Requires: os-xenapi
 Requires: oslo.cache
 Requires: oslo.concurrency
 Requires: oslo.config
@@ -51,6 +53,7 @@ Requires: oslo.log
 Requires: oslo.messaging
 Requires: oslo.middleware
 Requires: oslo.policy
+Requires: oslo.privsep
 Requires: oslo.reports
 Requires: oslo.rootwrap
 Requires: oslo.serialization
@@ -70,12 +73,11 @@ Requires: setuptools
 Requires: six
 Requires: sqlalchemy-migrate
 Requires: stevedore
+Requires: taskflow
+Requires: tooz
 Requires: websockify
 BuildRequires : buildreq-distutils3
 BuildRequires : pbr
-BuildRequires : pip
-BuildRequires : python3-dev
-BuildRequires : setuptools
 
 %description
 Team and repository tags
@@ -126,14 +128,14 @@ python3 components for the nova package.
 
 
 %prep
-%setup -q -n nova-15.1.3
+%setup -q -n nova-17.0.5
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1532354726
+export SOURCE_DATE_EPOCH=1533789550
 python3 setup.py build -b py3
 
 %install
@@ -155,15 +157,15 @@ install -m 0644 %{SOURCE1} %{buildroot}/usr/lib/tmpfiles.d/nova.conf
 /usr/bin/nova-api
 /usr/bin/nova-api-metadata
 /usr/bin/nova-api-os-compute
+/usr/bin/nova-api-wsgi
 /usr/bin/nova-cells
-/usr/bin/nova-cert
 /usr/bin/nova-compute
 /usr/bin/nova-conductor
 /usr/bin/nova-console
 /usr/bin/nova-consoleauth
 /usr/bin/nova-dhcpbridge
-/usr/bin/nova-idmapshift
 /usr/bin/nova-manage
+/usr/bin/nova-metadata-wsgi
 /usr/bin/nova-network
 /usr/bin/nova-novncproxy
 /usr/bin/nova-placement-api
@@ -178,6 +180,11 @@ install -m 0644 %{SOURCE1} %{buildroot}/usr/lib/tmpfiles.d/nova.conf
 
 %files config
 %defattr(-,root,root,-)
+%config /usr/etc/nova/api-paste.ini
+%config /usr/etc/nova/rootwrap.conf
+%config /usr/etc/nova/rootwrap.d/api-metadata.filters
+%config /usr/etc/nova/rootwrap.d/compute.filters
+%config /usr/etc/nova/rootwrap.d/network.filters
 /usr/lib/tmpfiles.d/nova.conf
 
 %files license
