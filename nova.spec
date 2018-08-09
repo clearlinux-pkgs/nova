@@ -6,7 +6,7 @@
 #
 Name     : nova
 Version  : 17.0.5
-Release  : 144
+Release  : 145
 URL      : http://tarballs.openstack.org/nova/nova-17.0.5.tar.gz
 Source0  : http://tarballs.openstack.org/nova/nova-17.0.5.tar.gz
 Source1  : nova.tmpfiles
@@ -28,6 +28,7 @@ Requires: SQLAlchemy
 Requires: WebOb
 Requires: castellan
 Requires: cryptography
+Requires: cursive
 Requires: decorator
 Requires: enum34
 Requires: eventlet
@@ -41,6 +42,7 @@ Requires: netaddr
 Requires: netifaces
 Requires: os-brick
 Requires: os-service-types
+Requires: os-traits
 Requires: os-win
 Requires: os-xenapi
 Requires: oslo.cache
@@ -63,7 +65,9 @@ Requires: oslo.versionedobjects
 Requires: osprofiler
 Requires: paramiko
 Requires: pbr
+Requires: prettytable
 Requires: psutil
+Requires: pypowervm
 Requires: python-cinderclient
 Requires: python-glanceclient
 Requires: python-neutronclient
@@ -77,7 +81,11 @@ Requires: taskflow
 Requires: tooz
 Requires: websockify
 BuildRequires : buildreq-distutils3
+BuildRequires : cursive
+BuildRequires : os-traits
 BuildRequires : pbr
+BuildRequires : prettytable
+BuildRequires : pypowervm
 
 %description
 Team and repository tags
@@ -135,7 +143,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1533789550
+export SOURCE_DATE_EPOCH=1533821747
 python3 setup.py build -b py3
 
 %install
