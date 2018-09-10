@@ -5,12 +5,12 @@
 # Source0 file verified with key 0xC36CDCB4DF00C68C (infra-root@openstack.org)
 #
 Name     : nova
-Version  : 17.0.5
-Release  : 146
-URL      : http://tarballs.openstack.org/nova/nova-17.0.5.tar.gz
-Source0  : http://tarballs.openstack.org/nova/nova-17.0.5.tar.gz
+Version  : 18.0.0
+Release  : 147
+URL      : http://tarballs.openstack.org/nova/nova-18.0.0.tar.gz
+Source0  : http://tarballs.openstack.org/nova/nova-18.0.0.tar.gz
 Source1  : nova.tmpfiles
-Source99 : http://tarballs.openstack.org/nova/nova-17.0.5.tar.gz.asc
+Source99 : http://tarballs.openstack.org/nova/nova-18.0.0.tar.gz.asc
 Summary  : Cloud computing fabric controller
 Group    : Development/Tools
 License  : Apache-2.0
@@ -23,24 +23,36 @@ Requires: Babel
 Requires: Jinja2
 Requires: Paste
 Requires: PasteDeploy
+Requires: PyMySQL
 Requires: Routes
 Requires: SQLAlchemy
+Requires: Sphinx
 Requires: WebOb
+Requires: bandit
 Requires: castellan
+Requires: coverage
 Requires: cryptography
 Requires: cursive
+Requires: ddt
 Requires: decorator
 Requires: enum34
 Requires: eventlet
+Requires: fixtures
+Requires: futures
+Requires: gabbi
 Requires: greenlet
+Requires: hacking
 Requires: iso8601
 Requires: jsonschema
 Requires: keystoneauth1
 Requires: keystonemiddleware
 Requires: lxml
 Requires: microversion_parse
+Requires: mox3
 Requires: netaddr
 Requires: netifaces
+Requires: openstackdocstheme
+Requires: os-api-ref
 Requires: os-brick
 Requires: os-service-types
 Requires: os-traits
@@ -64,22 +76,35 @@ Requires: oslo.serialization
 Requires: oslo.service
 Requires: oslo.utils
 Requires: oslo.versionedobjects
+Requires: oslo.vmware
+Requires: oslotest
 Requires: osprofiler
 Requires: paramiko
 Requires: pbr
 Requires: prettytable
 Requires: psutil
+Requires: psycopg2
 Requires: pypowervm
+Requires: python-barbicanclient
 Requires: python-cinderclient
+Requires: python-dateutil
 Requires: python-glanceclient
+Requires: python-mock
 Requires: python-neutronclient
+Requires: reno
 Requires: requests
+Requires: requests-mock
+Requires: retrying
 Requires: rfc3986
 Requires: setuptools
 Requires: six
 Requires: sqlalchemy-migrate
+Requires: stestr
 Requires: stevedore
 Requires: taskflow
+Requires: testresources
+Requires: testscenarios
+Requires: testtools
 Requires: tooz
 Requires: websockify
 BuildRequires : buildreq-distutils3
@@ -140,14 +165,14 @@ python3 components for the nova package.
 
 
 %prep
-%setup -q -n nova-17.0.5
+%setup -q -n nova-18.0.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1533829650
+export SOURCE_DATE_EPOCH=1536546199
 python3 setup.py build -b py3
 
 %install
