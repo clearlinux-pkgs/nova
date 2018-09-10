@@ -6,7 +6,7 @@
 #
 Name     : nova
 Version  : 18.0.0
-Release  : 147
+Release  : 148
 URL      : http://tarballs.openstack.org/nova/nova-18.0.0.tar.gz
 Source0  : http://tarballs.openstack.org/nova/nova-18.0.0.tar.gz
 Source1  : nova.tmpfiles
@@ -107,6 +107,7 @@ Requires: testscenarios
 Requires: testtools
 Requires: tooz
 Requires: websockify
+Requires: zVMCloudConnector
 BuildRequires : buildreq-distutils3
 BuildRequires : cursive
 BuildRequires : microversion_parse
@@ -115,6 +116,7 @@ BuildRequires : os_vif
 BuildRequires : pbr
 BuildRequires : prettytable
 BuildRequires : pypowervm
+BuildRequires : zVMCloudConnector
 
 %description
 Team and repository tags
@@ -172,7 +174,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1536546199
+export SOURCE_DATE_EPOCH=1536550880
 python3 setup.py build -b py3
 
 %install
