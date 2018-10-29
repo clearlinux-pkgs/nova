@@ -1,11 +1,59 @@
 CHANGES
 =======
 
+18.0.2
+------
+
+* Fix stacktraces with redis caching backend
+* Null out instance.availability\_zone on shelve offload
+* nova-manage - fix online\_data\_migrations counts
+* Use INFO for logging no allocation candidates
+* Ignore VirtDriverNotReady in \_sync\_power\_states periodic task
+* Enforce case-sensitive hostnames in aggregate host add
+* Revert "Make host\_aggregate\_map dictionary case-insensitive"
+* Explicitly fail if trying to attach SR-IOV port
+* nova-status - don't count deleted compute\_nodes
+* Optimize AZ lookup during schedule\_and\_build\_instances
+* Delete instance\_id\_mappings record in instance\_destroy
+* Filter deleted computes from get\_all\_by\_uuids()
+
+18.0.1
+------
+
+* XenAPI/Stops the migration of volume backed VHDS
+* libvirt: Use os.stat and os.path.getsize for RAW disk inspection
+* Fix soft deleting vm fails after "nova resize" vm
+* Fix service list for disabled compute using MC driver
+* Update RequestSpec.flavor on resize\_revert
+* [placement] split gigantor SQL query, add logging
+* Follow devstack-plugin-ceph job rename
+* import zuul job settings from project-config
+* Do not dump all instances in the scheduler
+* Configure placement DB context manager for nova-manage/status
+* placement: use simple code paths when possible
+* Fix a failure to format config sample
+* Make scheduler.utils.setup\_instance\_group query all cells
+* Fix nova-status "\_check\_resource\_providers" check
+* Fix DB archiver AttributeError due to wrong table name attribute used
+* Add functional test for affinity with multiple cells
+* Document unset/reset wrinkle for \*\_allocation\_ratio options
+* Don't persist zero allocation ratios in ResourceTracker
+* libvirt: skip setting rx/tx queue sizes for not virto interfaces
+* libvirt: Always escape IPv6 addresses when used in migration URI
+* Don't use '\_TransactionContextManager.\_async'
+* Move conductor wait\_until\_ready() delay before manager init
+* Fix image-defined numa claims during evacuate
+* Delete instance\_group\_member records from API DB during archive
+* Restart scheduler in TestNovaManagePlacementHealAllocations
+* Fix a broken conf file description in networking doc
+
 18.0.0
 ------
 
+* Remove noisy DEBUG log
 * Correct the release notes related to nova-consoleauth
 * libvirt: Don't react to VIR\_DOMAIN\_EVENT\_SUSPENDED\_MIGRATED events
+* Handle binding\_failed vif plug errors on compute restart
 * Filter out instances without a host when populating AZ
 
 18.0.0.0rc2
