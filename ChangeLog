@@ -1,6 +1,31 @@
 CHANGES
 =======
 
+18.0.3
+------
+
+* Add nova-status upgrade check for consoles
+* Explain cpu\_model\_extra\_flags and nested guest support
+* Add rolling upgrade info to enable\_consoleauth workaround reno
+* libvirt: Avoid setting MTU during live migration if unset
+* Add tests for bug #1800511
+* Fix up compute rpcapi version for pike release
+* Ensure attachment cleanup on failure in driver.pre\_live\_migration
+* Move live\_migration.pre.start to the start of the method
+* conductor: Recreate volume attachments during a reschedule
+* Add regression test for bug#1784353
+* fixtures: Track volume attachments within CinderFixtureNewAttachFlow
+* Ignore uuid if already set in ComputeNode.update\_from\_virt\_driver
+* Fix formatting non-templated cell URLs with no config
+* Use unique consumer\_id when doing online data migration
+* Add recreate test for bug 1798163
+* Handle volume API failure in \_post\_live\_migration
+* Use nova-consoleauth only if workaround enabled
+* Replace usage of get\_legacy\_facade() with get\_engine()
+* Imported Translations from Zanata
+* Handle missing marker during online data migration
+* Not set instance to ERROR if set\_admin\_password failed
+
 18.0.2
 ------
 
@@ -23,6 +48,7 @@ CHANGES
 * XenAPI/Stops the migration of volume backed VHDS
 * libvirt: Use os.stat and os.path.getsize for RAW disk inspection
 * Fix soft deleting vm fails after "nova resize" vm
+* hyperv: Cleans up live migration Planned VM
 * Fix service list for disabled compute using MC driver
 * Update RequestSpec.flavor on resize\_revert
 * [placement] split gigantor SQL query, add logging
@@ -55,6 +81,7 @@ CHANGES
 * libvirt: Don't react to VIR\_DOMAIN\_EVENT\_SUSPENDED\_MIGRATED events
 * Handle binding\_failed vif plug errors on compute restart
 * Filter out instances without a host when populating AZ
+* Update ssh configuration doc
 
 18.0.0.0rc2
 -----------
