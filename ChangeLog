@@ -1,29 +1,71 @@
 CHANGES
 =======
 
+18.1.0
+------
+
+* Remove GROUP BY clause from CellMapping.get\_by\_project\_id
+* Add secret=true to fixed\_key configuration parameter
+* Handle tags in \_bury\_in\_cell0
+* Only warn about not having computes nodes once in rpcapi
+* Ignore MoxStubout deprecation warnings
+* Create BDMs/tags in cell with instance when over-quota
+* Add functional regression test for bug 1806064
+* Note the aggregate allocation ratio restriction in scheduler docs
+* Fix InstanceNotFound during \_destroy\_evacuated\_instances
+* Add functional regression test for bug 1794996
+* Add a bug tag for nova doc
+* Remove unnecessary redirect
+* Add description of custom resource classes
+* Use long\_rpc\_timeout in select\_destinations RPC call
+* Imported Translations from Zanata
+* Don't use private interface in oslo.service
+* Default embedded instance.flavor.is\_public attribute
+* Make supports\_direct\_io work on 4096b sector size
+* Consider root id is None in the database case
+* Add recreate test for bug 1799892
+* Handle unicode characters in migration params
+* Mention meta key suffix in tenant isolation with placement docs
+* Harden placement init under wsgi
+
 18.0.3
 ------
 
+* Properly track local root disk usage during moves
+* Add regression test for bug 1796737
+* Provide allocation\_ratio/reserved amounts from update\_provider\_tree()
+* Add functional recreate test for bug 1799727
 * Add nova-status upgrade check for consoles
 * Explain cpu\_model\_extra\_flags and nested guest support
 * Add rolling upgrade info to enable\_consoleauth workaround reno
 * libvirt: Avoid setting MTU during live migration if unset
 * Add tests for bug #1800511
+* Fix os-simple-tenant-usage result order
 * Fix up compute rpcapi version for pike release
 * Ensure attachment cleanup on failure in driver.pre\_live\_migration
 * Move live\_migration.pre.start to the start of the method
 * conductor: Recreate volume attachments during a reschedule
 * Add regression test for bug#1784353
 * fixtures: Track volume attachments within CinderFixtureNewAttachFlow
+* Update resources once in update\_available\_resource
+* Don't persist RequestSpec.requested\_destination
+* Add regression test for bug 1797580
+* Handle online\_data\_migrations exceptions
 * Ignore uuid if already set in ComputeNode.update\_from\_virt\_driver
+* Fix NoneType error in \_notify\_volume\_usage\_detach
 * Fix formatting non-templated cell URLs with no config
 * Use unique consumer\_id when doing online data migration
 * Add recreate test for bug 1798163
 * Handle volume API failure in \_post\_live\_migration
 * Use nova-consoleauth only if workaround enabled
+* Handle IndexError in \_populate\_neutron\_binding\_profile
 * Replace usage of get\_legacy\_facade() with get\_engine()
+* Time how long select\_destinations() takes in conductor
+* [stable-only] Add report\_ironic\_standard\_resource\_class\_inventory option
 * Imported Translations from Zanata
+* Set defult value of num\_nvme\_discover\_tries=5
 * Handle missing marker during online data migration
+* De-dupe subnet IDs when calling neutron /subnets API
 * Not set instance to ERROR if set\_admin\_password failed
 
 18.0.2
@@ -33,10 +75,13 @@ CHANGES
 * Null out instance.availability\_zone on shelve offload
 * nova-manage - fix online\_data\_migrations counts
 * Use INFO for logging no allocation candidates
+* placement: Always reset conf.CONF when starting the wsgi app
 * Ignore VirtDriverNotReady in \_sync\_power\_states periodic task
 * Enforce case-sensitive hostnames in aggregate host add
 * Revert "Make host\_aggregate\_map dictionary case-insensitive"
 * Explicitly fail if trying to attach SR-IOV port
+* Wait for network-vif-plugged on resize revert
+* Validate transport\_url in nova-manage cell\_v2 commands
 * nova-status - don't count deleted compute\_nodes
 * Optimize AZ lookup during schedule\_and\_build\_instances
 * Delete instance\_id\_mappings record in instance\_destroy
@@ -50,6 +95,7 @@ CHANGES
 * Fix soft deleting vm fails after "nova resize" vm
 * hyperv: Cleans up live migration Planned VM
 * Fix service list for disabled compute using MC driver
+* Refix disk size during live migration with disk over-commit
 * Update RequestSpec.flavor on resize\_revert
 * [placement] split gigantor SQL query, add logging
 * Follow devstack-plugin-ceph job rename
@@ -66,6 +112,7 @@ CHANGES
 * Don't persist zero allocation ratios in ResourceTracker
 * libvirt: skip setting rx/tx queue sizes for not virto interfaces
 * libvirt: Always escape IPv6 addresses when used in migration URI
+* hardware: fix memory check usage for small/large pages
 * Don't use '\_TransactionContextManager.\_async'
 * Move conductor wait\_until\_ready() delay before manager init
 * Fix image-defined numa claims during evacuate
