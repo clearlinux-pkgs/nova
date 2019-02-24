@@ -6,7 +6,7 @@
 #
 Name     : nova
 Version  : 18.1.0
-Release  : 155
+Release  : 156
 URL      : http://tarballs.openstack.org/nova/nova-18.1.0.tar.gz
 Source0  : http://tarballs.openstack.org/nova/nova-18.1.0.tar.gz
 Source1  : nova.tmpfiles
@@ -25,7 +25,6 @@ Requires: Paste
 Requires: PasteDeploy
 Requires: Routes
 Requires: SQLAlchemy
-Requires: Sphinx
 Requires: WebOb
 Requires: castellan
 Requires: cryptography
@@ -43,8 +42,6 @@ Requires: lxml
 Requires: microversion_parse
 Requires: netaddr
 Requires: netifaces
-Requires: openstackdocstheme
-Requires: os-api-ref
 Requires: os-brick
 Requires: os-service-types
 Requires: os-traits
@@ -78,13 +75,11 @@ Requires: python-cinderclient
 Requires: python-dateutil
 Requires: python-glanceclient
 Requires: python-neutronclient
-Requires: reno
 Requires: requests
 Requires: retrying
 Requires: rfc3986
 Requires: setuptools
 Requires: six
-Requires: sphinx-feature-classification
 Requires: sqlalchemy-migrate
 Requires: stevedore
 Requires: taskflow
@@ -102,8 +97,9 @@ BuildRequires : pypowervm
 BuildRequires : zVMCloudConnector
 
 %description
-Team and repository tags
-        ========================
+This is a database migration repository.
+More information at
+https://sqlalchemy-migrate.readthedocs.io/en/latest/
 
 %package bin
 Summary: bin components for the nova package.
@@ -157,7 +153,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1545246819
+export SOURCE_DATE_EPOCH=1551035099
 export MAKEFLAGS=%{?_smp_mflags}
 python3 setup.py build
 
