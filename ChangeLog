@@ -1,11 +1,68 @@
 CHANGES
 =======
 
+18.2.0
+------
+
+* Fix resetting non-persistent fields when saving obj
+* Update instance.availability\_zone during live migration
+* pass endpoint interface to Ironic client
+* Allow utime call to fail on qcow2 image base file
+* Handle templated cell mappings in nova-status
+* Handle missing exception in instance creation code
+* Fix WeighedHost logging regression
+* Check hosts have no instances for AZ rename
+* Fix an error when generating a host ID
+* Fix resource tracker updates during instance evacuation
+* ironic: check fresh data when sync\_power\_state doesn't line up
+* ironic: stop hammering ironic API in power sync loop
+* Fix race in test\_volume\_swap\_server\_with\_error
+* fix up numa-topology live migration hypervisor check
+* Move legacy-grenade-dsvm-neutron-multinode-live-migration in-tree
+* Fix legacy-grenade-dsvm-neutron-multinode-live-migration
+* Avoid BadRequest error log on volume attachment
+* Don't emit warning when ironic properties are zero
+* Lock detach\_volume
+* Fix a missing policy in test policy data
+* Provide a useful error message when trying to update non-compute services
+* Ignore VolumeAttachmentNotFound exception in compute.manager
+* tox: Don't write byte code (maybe)
+* Avoid redundant initialize\_connection on source post live migration
+* Fix InstanceMapping to always default queued\_for\_delete=False
+* PCI: do not force remove allocated devices
+* Use X-Forwarded-Proto as origin protocol if present
+* Don't call begin\_detaching when detaching volume from shelved vm
+* Fix port dns\_name reset
+* Skip checking of target\_dev for vhostuser
+* Fix overcommit for NUMA-based instances
+* Fix typo
+* Fix using template cell urls with nova-manage
+* Convert port to str when validate console port
+* Fix incompatible version handling in BuildRequest
+* Send context.global\_id on neutron calls
+* libvirt: Add workaround to cleanup instance dir when using rbd
+* Restore nova-consoleauth to install docs
+* Add links to summit videos in user/cells.rst
+* Removing pip-missing-reqs from default tox jobs
+* Imported Translations from Zanata
+* Ensure rbd auth fallback uses matching credentials
+* Fix destination\_type attribute in the bdm\_v2 documentation
+* Fix a broken link
+* Exclude build request marker from server listing
+* Fix a broken-link in nova doc
+* Fix a broken-link in nova doc
+* Fix an inaccurate link in nova doc
+* Document using service user tokens for long running operations
+* Handle unbound vif plug errors on compute restart
+* Update port device\_owner when unshelving
+* Fail to live migration if instance has a NUMA topology
+
 18.1.0
 ------
 
 * Remove GROUP BY clause from CellMapping.get\_by\_project\_id
 * Add secret=true to fixed\_key configuration parameter
+* Make compute rpcapi version calculation check all cells
 * Handle tags in \_bury\_in\_cell0
 * Only warn about not having computes nodes once in rpcapi
 * Ignore MoxStubout deprecation warnings
@@ -17,6 +74,7 @@ CHANGES
 * Add a bug tag for nova doc
 * Remove unnecessary redirect
 * Add description of custom resource classes
+* Migrate nova v2.0 legacy job to zuulv3
 * Use long\_rpc\_timeout in select\_destinations RPC call
 * Imported Translations from Zanata
 * Don't use private interface in oslo.service
