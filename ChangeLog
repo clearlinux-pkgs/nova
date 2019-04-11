@@ -1,215 +1,856 @@
 CHANGES
 =======
 
-18.2.0
+19.0.0
 ------
 
-* Fix resetting non-persistent fields when saving obj
-* Update instance.availability\_zone during live migration
+* Remove CellMappingPayload database\_connection and transport\_url fields
+* Libvirt: gracefully handle non-nic VFs
+* Add doc on VGPU allocs and inventories for nrp
+* Replace openstack.org git:// URLs with https://
+* Update UPPER\_CONSTRAINTS\_FILE for stable/stein
+* Update .gitreview for stable/stein
+
+19.0.0.0rc1
+-----------
+
+* Fix links to neutron QoS minimum bandwidth doc
+* Don't register placement opts mutiple times in a test
+* Add known issue for minimum bandwidth resource leak
+* Add a prelude release note for the 19.0.0 Stein GA
+* docs: Misc cleanups
+* Move libvirt calculation of machine type to utils.py
+* Add docs for compute capabilities as traits
+* Clarify policy shortcomings in policy enforcement doc
+* Remove additional policy configuration details from policy doc
+* Remove unnecessary default provider\_tree when getting traits
+* qemu: Make disk image conversion dramatically faster
+* Remove obsolete policy configuration details from docs
+* Documentation for bandwidth support
+* Move slight bonkers IP management to privsep
+* Remove "Fixing the Scheduler DB model" from schedule evolution doc
+* Remove stale aggregates notes from scheduler evolution doc
+* Trivial typo fix for REST API in policy enforcement docs
+* Remove resize caveat from conductor docs
+* docs: cleanup driver parity scope section
+* Pass kwargs to exception to get better format of error message
+* Avoid crashing while getting libvirt capabilities with unknown arch names
+* Re-enable Ceph in live migration testing
+* Customize irrelevant-files for nova-live-migration job
+* Migrate legacy jobs to Ubuntu Bionic
+* Disable the tls-proxy in nova-next & fix nova-tox-functional-py35 parent
+* Trivial: fix typo in reno
+* Skip the ceph based live migration testing
+* api-ref: Add description for BDM volume\_size
+* add python 3.7 unit test job
+* Trivialfix for help description of images\_type
+* Add functional test to delete a server while in VERIFY\_RESIZE
+* Require python-ironicclient>=2.7.0
 * pass endpoint interface to Ironic client
 * Allow utime call to fail on qcow2 image base file
-* Handle templated cell mappings in nova-status
-* Handle missing exception in instance creation code
+* Update compute rpc version alias for stein
+* fix race in test\_interface\_detach\_with\_port\_with\_bandwidth\_request
+* doc: Fix a typo
+* Remove fake\_libvirt\_utils from the cache concurrency tests
+* Add descriptions of numbered resource classes and traits
+* Add online data migration for populating user\_id
+* Populate InstanceMapping.user\_id during migrations and schedules
+* Add user\_id field to InstanceMapping
+* update gate test for removal of force evacuate
+* Use assertXmlEqual() helper for all XML comparison tests
+* doc: mark the max microversion for stein
+* Remove duplicate cleanup in functional tests
+* Add user\_id column to the instance\_mappings table
+* docs: Fix nits in remote console guide
+* Add get\_instance\_pci\_request\_from\_vif
+* Allow per-port modification of vnic\_type and profile
+* Separate methods to free claimed and allocated devs
+* Add missing libvirt exception during device detach
+* FUP for test\_reshape
+* Test proper allocation of devices during reshape
+* Cleanup the exec\_ebtables code a little
+* Move killing processes to privsep
+* Move cleaning conntrack to privsep
+* Move arping to privsep
+* doc: cleanup pci.alias references
+* Extend volume for libvirt network volumes (RBD)
+* Do not run tempest.scenario.test\_network\* tests in nova-next
+* Warn if group\_policy is missing from flavor
+* tests: Create PCI tests for NUMA'y tests
+* fakelibvirt: Add ability to generate fake PCI devices
+* objects: Store InstancePCIRequest.numa\_policy in DB
+* Update --max-rows parameter description for archive\_deleted\_rows
+* Validate PCI aliases early in resize
+* Move additional IP address management to privsep
+* Move route management to privsep
+* Convert additional IP management calls to privsep
+* Move DHCP releasing to privsep
+* Move set\_vf\_interface\_vlan to be with its only caller
 * Fix WeighedHost logging regression
-* Check hosts have no instances for AZ rename
+* Improve libvirt image and snapshot handling
+* Flavor extra spec and image properties validation from API
+* Handle missing exception in instance creation code
+* Support server create with ports having resource request
+* Ensure that bandwidth and VF are from the same PF
+* Revert "Fixes race condition with privsep utime"
+* Handle templated cell mappings in nova-status
+* Parse <emulator> elements from virConnectGetCapabilities()
+* api-ref: typo service.disable\_reason
+* Use a placement conf when testing report client
+* Improve existing flavor and image metadata validation
+* Correct instance port binding for rebuilds
+* Add nits from Id2beaa7c4e5780199298f8e58fb6c7005e420a69
+* Fix wrong consumer type in logging
 * Fix an error when generating a host ID
-* Fix resource tracker updates during instance evacuation
+* Remove mox in unit/network/test\_neutronv2.py (3)
+* Remove wrong description for auto resize confirm
+* Fixes race condition with privsep utime
+* fix bug with XML matcher handling missing children
+* api-ref: explain aggregate set\_metadata semantics
+* Check hosts have no instances for AZ rename
+* Remove TypeError handling for get\_info
 * ironic: check fresh data when sync\_power\_state doesn't line up
-* ironic: stop hammering ironic API in power sync loop
-* Fix race in test\_volume\_swap\_server\_with\_error
-* fix up numa-topology live migration hypervisor check
+* Add oslo.privsep to config-generator list
+* Stop using "nova" in API samples when creating a server
+* Add "links" in the response of "nova show" for a down-cell instance
+* Make nova-grenade-live-migration voting and gating
 * Move legacy-grenade-dsvm-neutron-multinode-live-migration in-tree
-* Fix legacy-grenade-dsvm-neutron-multinode-live-migration
-* Avoid BadRequest error log on volume attachment
-* Don't emit warning when ironic properties are zero
-* Lock detach\_volume
+* Convert driver supported capabilities to compute node provider traits
+* Adds the server group info into show server detail API
+* Ironic: bump minimum API version to 1.38
+* Record requester in the InstancePCIRequest
+* Remove port allocation during detach
+* fix up numa-topology live migration hypervisor check
+* Add remove\_resources\_from\_instance\_allocation to report client
+* Test live migration with config drive
+* conf: Call out where pci.alias should be set
+* conf: Deprecate 'disable\_libvirt\_livesnapshot' option
+* FUP: docs nit
+* Add functional test for libvirt vgpu reshape
+* Optimize populate\_queued\_for\_delete online data migration
+* ironic: partition compute services by conductor group
+* Fix the api sample docs for microversion 2.68
+* Fup for the bandwidth series
+* Change LibvirtDriver.capabilities to an instance variable
+* [Doc] Best practices for effectively tolerating down cells
+* libvirt: implement reshaper for vgpu
+* Use the correct mdev allocated from the pGPU
+* remove deprecated os\_brick import from ScaleIO driver
+* Fix resetting non-persistent fields when saving obj
+* Add unit tests for missing VirtualInterface in 2.70 os-interface
+* conf: Deprecated 'defer\_iptables\_apply'
+* Refactor "networks" processing in ServersController.create
+* Remove \_legacy\_dict methods
+* Remove misleading code from \_move\_operation\_alloc\_request()
+* Log why rescheduling is disabled
+* Dump config options on wsgi startup earlier
+* Follow up for I0c764e441993e32aafef0b18049a425c3c832a50
+* Remove deprecated 'flavors' policy
+* Remove deprecated 'os-server-groups' policy
+* Fix a typo in configuration description
+* Add microversion to expose virtual device tags
+* FUP for Id7827fe8dc27112e342dc25c902c8dbc25f63b94
+* Test boot with more ports with bandwidth request
+* Send RP uuid in the port binding
+* Recalculate request group - RP mapping during re-schedule
+* Pass resource provider mapping to neutronv2 api
+* Fill the RequestGroup mapping during schedule
+* Calculate RequestGroup resource provider mapping
+* Replace ansible --sudo with --become in live\_migration/hooks scripts
+* Fix typo in initial\_disk\_allocation\_ratio release note
+* API microversion 2.69: Handles Down Cells Documentation
+* Move create\_tap\_dev into privsep
+* Create specialist set\_macaddr\_and\_vlan helper
+* Fix fake DELETE in PlacementFixture
+* libvirt: Omit needless check on 'CONF.serial\_console'
+* libvirt: Drop MIN\_LIBVIRT\_PARALLELS\_SET\_ADMIN\_PASSWD
+* libvirt: Rewrite \_create\_pty\_device() to be clearer
+* libvirt: Bump MIN\_{LIBVIRT,QEMU}\_VERSION for "Stein"
+* API microversion 2.69: Handles Down Cells
+* Add context.target\_cell() stub to DownCellFixture
+* Plumbing required in servers ViewBuilder to construct partial results
+* Trim fake\_deserialize\_context in test\_conductor
+* Cleanup inflight rpc messages between test cases
+* Fix irrelevant-files for legacy-grenade-dsvm-neutron-multinode-live-migration
+* Stub out port binding create/delete in NeutronFixture
+* Make VolumeAttachmentsSampleV249 test other methods
+* Fix deps for api-samples tox env
 * Fix a missing policy in test policy data
-* Provide a useful error message when trying to update non-compute services
-* Ignore VolumeAttachmentNotFound exception in compute.manager
-* tox: Don't write byte code (maybe)
+* Remove deprecated 'os-flavor-manage' policy
+* Drop the integrated-gate (py27) template
+* Address nits from I9e30a24a4c0640f282f507d0a96640d3cdefe43c
+* api-ref: Add descriptions for vol-backed snapshots
+* Change sqlalchemy warnings filter to an error
+* Libvirt: do not set MAC when unplugging macvtap VF
+* Lock detach\_volume
+* docs: ComputeDriver.update\_provider\_tree in nova
+* Document how to make tests log at DEBUG level
+* Drop specific versions of openSUSE-based distributions
+* Remove cells v1 (for the most part) from the docs
+* api-ref: mark os-cells as deprecated
+* Further de-dupe os-vif VIF tests
+* Validate bandwidth configuration for other VIF types
+* Remove get\_config\_vhostuser
+* Use math.gcd starting with python 3.5
+* Adding cross refs for config options in scheduler filter guide
 * Avoid redundant initialize\_connection on source post live migration
+* Change nova-next tempest test regex
+* Ensure config regexes match the entire string
+* Make move\_allocations handle empty source allocations
+* RT: improve logging in \_update\_usage\_from\_migration
+* Make Claim.\_claim\_test handle SchedulerLimits object
+* Move finish\_resize.(start|end) notifications to helper method
+* Don't set bandwidth limits for vhostuser, hostdev interfaces
+* Use tox 3.1.1 fixes
+* tox: Don't write byte code (maybe)
+* Trivial: reorder hashes according to object\_hashes.txt
+* Use placement.inventory.inuse in report client
+* Provide a useful error message when trying to update non-compute services
+* Avoid BadRequest error log on volume attachment
+* Follow up (#2) for the bw resource provider series
+* Fix race in test\_volume\_swap\_server\_with\_error
+* Ignore VolumeAttachmentNotFound exception in compute.manager
+* Cleanup return\_reservation\_id in ServersController.create
+* Refactor bdm handling in ServersController.create method
+* Share snapshot image membership with instance owner
+* API: Remove evacuate/live-migrate 'force' parameter
+* Plumbing for allowing the all-tenants filter with down cells
+* Plumbing for ignoring list\_records\_by\_skipping\_down\_cells
+* Modify InstanceMappingList.get\_not\_deleted\_by\_cell\_and\_project()
+* Convert CPU\_TRAITS\_MAPPING to use os\_traits
+* Extend RequestGroup object for mapping
+* Transfer port.resource\_request to the scheduler
+* create\_veth\_pair is unused, remove it
+* Move binding ips to privsep
+* Change live\_migration\_wait\_for\_vif\_plug=True by default
+* Fix deprecation warning for threadgroup.add\_timer
+* doc: specify --os-compute-api-version when setting flavor description
+* Ignore sqla-migrate inspect.getargspec deprecation warnings
+* Switch to using os-resource-classes
+* Remove placement from contributor doc
+* Remove link to placement configuration from nova config docs
+* Remove placement from nova install docs
+* Update nova docs front page for placement removal
+* Update help messages for weight multipliers
+* Add minimum value in maximum\_instance\_delete\_attempts
+* Use :oslo-config: role in hypervisor-kvm doc
+* api-ref: mention policy defaults for aggregates
+* api-ref: warn about changing/unsetting AZ name with instances
+* Fix legacy-grenade-dsvm-neutron-multinode-live-migration
+* doc: mention description field in user flavors docs
+* api-ref: fix link to flavor extra specs docs
+* cleanup \*.pyc files in docs tox envs
+* update flavor admin docs
 * Fix InstanceMapping to always default queued\_for\_delete=False
+* Ignore some PendingDeprecationWarnings for os-vif
+* Replace glance command with openstack command
+* Extract compute API \_create\_image to compute.utils
+* Move resize.(start|end) notification sending to helper method
+* Move resize.prep.start/end notifications to helper method
+* Isolate cell-targeting code in MigrationTask
+* Remove PLACEMENT\_DB\_ENABLED from nova-next job config
+* Drop nova-multiattach job
+* Don't force evacuate/live migrate in notification sample tests
+* doc: Add solution to live migration ssh issues
+* Follow up for per-instance serial number change
+* Change nova-next job to run with python3
+* doc: update the security groups admin doc
+* doc: link Kashyap's cpu model talk to the libvirt driver config docs
+* doc: link admin/configuration from admin home page
+* Fup for the bandwidth resource provider series
+* Per-instance serial number
 * PCI: do not force remove allocated devices
-* Use X-Forwarded-Proto as origin protocol if present
-* Don't call begin\_detaching when detaching volume from shelved vm
+* Ignore SAWarnings for "Evaluating non-mapped column expression"
+* Move retry from \_update to \_update\_to\_placement
+* Collect duplicate codepaths in os\_vif\_util
+* Duplicate os-vif datapath offload metadata
+* Add support for vrouter HW datapath offloads
+* Switch tempest-slow to be run on python 3
+* Move interface disabling to privsep
+* Move setting mac addresses for network devices to privsep
+* Fix config docs for handle\_virt\_lifecycle\_events
+* Add configuration of maximum disk devices to attach
+* Force refresh instance info\_cache during heal
+* Add fill\_virtual\_interface\_list online\_data\_migration script
+* Fix string interpolations in logging calls
+* FUPs: ReportClient traffic series
 * Fix port dns\_name reset
+* Reject unshelve with port having resource request
+* Reject evacuate with port having resource request
+* Reject migrate with port having resource request
+* Reject resize with port having resource request
+* Reject server create with port having resource request
+* Read port resource request from Neutron
+* Include requested\_resources to allocation candidate query
+* Create RequestGroup from neutron port
+* Reject networks with QoS policy
+* Add a warning for max\_concurrent\_live\_migrations
+* Convert vrouter legacy plugging to os-vif
+* Fix ComputeNode ovo compatibility code
+* Remove unused quota options
+* Raise 403 instead of 500 error from attach volume API
+* Reject interface attach with QoS aware port
 * Skip checking of target\_dev for vhostuser
-* Fix overcommit for NUMA-based instances
-* Fix typo
-* Fix using template cell urls with nova-manage
+* Make 'plugin' a required argument for '\_get\_vif\_instance'
+* Add missing ws seperator between words
+* Don't call begin\_detaching when detaching volume from shelved vm
 * Convert port to str when validate console port
+* docs: Update references to "QEMU-native TLS" document
+* libvirt: A few miscellaneous items related to "native TLS"
+* Per aggregate scheduling weight
+* Cleanup soft (anti)affinity weight multiplier options
+* unused images are always deleted (add to in-tree hper-v code)
+* Fix using template cell urls with nova-manage
+* Turn off rp association refresh in nova-next
 * Fix incompatible version handling in BuildRequest
+* Use a static resource tracker in compute manager
+* api-ref: Body verification for the lock action
+* Rip out the SchedulerClient
+* Rip the report client out of SchedulerClient
+* Commonize \_update code path
+* Consolidate inventory refresh
+* Reduce calls to placement from \_ensure
+* Fix ovo compatibility code unit tests
+* Fix overcommit for NUMA-based instances
 * Send context.global\_id on neutron calls
+* Use X-Forwarded-Proto as origin protocol if present
+* Add method to generate device names universally
+* docs: Secure live migration with QEMU-native TLS
+* The field instance\_name was added to InstanceCreatePayload
+* Make functional-py37 job work like others
+* Allow run metadata api per cell
+* Enhance exception raised when invalid power state
+* Doc: rebuild can result in SHUTOFF VM state
+* Rename Ironic jobs
+* Extend NeutronFixture to return port with resource request
+* libvirt: Support native TLS for migration and disks over NBD
+* Follow up for "Add API ref guideline for body text"
+* Remove args(os=False) in monkey\_patch
+* Run nova-lvm job on nova/privsep/\* changes
+* Fix circular import in nova.privsep.utils
+* Change to debug repetitive info messages
 * libvirt: Add workaround to cleanup instance dir when using rbd
-* Restore nova-consoleauth to install docs
-* Add links to summit videos in user/cells.rst
-* Removing pip-missing-reqs from default tox jobs
-* Imported Translations from Zanata
+* Remove useless test samples for v2.66
+* Fix rfc3986.is\_valid\_uri deprecation warnings
+* Use oslo\_db.sqlalchemy.test\_fixtures
+* libvirt: generalize rbd volume fallback removal statement
 * Ensure rbd auth fallback uses matching credentials
-* Fix destination\_type attribute in the bdm\_v2 documentation
+* doc: Switch header styles in support doc
+* Add links to summit videos in user/cells.rst
+* Add functional regression recreate test for bug 1790204
+* nit: Add space to feature support docs
+* vmware:add support for the hw\_video\_ram image property
+* Update instance.availability\_zone during live migration
 * Fix a broken link
-* Exclude build request marker from server listing
-* Fix a broken-link in nova doc
-* Fix a broken-link in nova doc
+* Drop old service version check compat from \_delete\_while\_booting
+* Remove "API Service Version" upgrade check
+* Remove "Resource Providers" upgrade check
 * Fix an inaccurate link in nova doc
+* Pass request\_spec from compute to cell conductor on reschedule
+* Exclude build request marker from server listing
 * Document using service user tokens for long running operations
+* Redirect user/placement to placement docs
 * Handle unbound vif plug errors on compute restart
-* Update port device\_owner when unshelving
+* Fix a broken-link in nova doc
+* Fix a broken-link in nova doc
+* Use renamed template 'integrated-gate-py3'
+* Remove legacy RequestSpec compat from conductor rebuild\_instance
+* Remove legacy RequestSpec compat from conductor unshelve\_instance
+* Remove legacy RequestSpec compat code from live migrate task
+* Remove legacy request spec compat code from API
+* Address nits on I1f1fa1d0f79bec5a4101e03bc2d43ba581dd35a0
+* Address nits on I08991796aaced2abc824f608108c0c786181eb65
+* doc: Rework 'resize' user doc
+* Migrate "reboot an instance" user guide docs
+* Fix jsonutils.to\_primitive UserWarning
+* Move interface enabling to privsep
+* Move simple execute call to processutils
+* Move some linux network helpers to use privsep
+* Move bridge creation to privsep
+* Move a generic bridge helper to a linux\_net privsep file
+* Properly log request headers in metadata API
+* Default zero disk flavor to RULE\_ADMIN\_API in Stein
+* Drop request spec migration code
+* Fix best\_match() deprecation warning
+* Remove mox in libvirt/test\_driver.py (8)
+* Remove mox in libvirt/test\_driver.py (7)
+* Fix the link to the Placement API Version History
+* Add descriptions about microversions
+* Migrate upgrade checks to oslo.upgradecheck
+* Fix up force live migration completion docs
+* libvirt: remove live\_migration\_progress\_timeout config
+* libvirt: add live migration timeout action
 * Fail to live migration if instance has a NUMA topology
-
-18.1.0
-------
-
+* Add DownCellFixture
 * Remove GROUP BY clause from CellMapping.get\_by\_project\_id
-* Add secret=true to fixed\_key configuration parameter
-* Make compute rpcapi version calculation check all cells
+* Add py36/py37 functional jobs to the experimental queue
+* Add python 3.7 unit and functional tox jobs
+* Replace ThreadPoolExecutor with GreenThreadPoolExecutor
+* Fix destination\_type attribute in the bdm\_v2 documentation
+* Add irrelevant-files for grenade-py3 jobs
+* allow tcp-based consoles in get\_console\_output
+* Use external placement in functional tests
+* Remove lock on SchedulerReportClient.\_create\_client
+* DRY up SchedulerReportClient init
+* Only construct SchedulerReportClient on first access from API
+* Cleanup vendordata docs
+* Remove utils.execute() from virt.disk.api
+* Remove utils.execute() from the hyperv driver
+* Remove the final user of utils.execute() from virt.images
+* Remove final users of utils.execute() in libvirt
+* Imagebackend should call processutils.execute directly
 * Handle tags in \_bury\_in\_cell0
+* Make compute rpcapi version calculation check all cells
 * Only warn about not having computes nodes once in rpcapi
+* Fix typo
+* Move nova.libvirt.utils away from using nova.utils.execute()
+* Remove utils.execute() from quobyte libvirt storage driver
+* refactor get\_console\_output() for console logfiles
+* Final release note for versioned notification transformation
+* Add API ref guideline for body text
+* Remove allocations before setting vm\_status to SHELVED\_OFFLOADED
+* Drop pre-cellsv2 compat in compute API.get()
+* Move nova-cells-v1 to experimental queue
 * Ignore MoxStubout deprecation warnings
-* Create BDMs/tags in cell with instance when over-quota
-* Add functional regression test for bug 1806064
+* Fixed concurrent access to direct io test file
+* Add docs for (initial) allocation ratio configuration
 * Note the aggregate allocation ratio restriction in scheduler docs
+* Add compute\_node ratio online data migration script
+* Add ratio online data migration when load compute node
+* Use tempest [compute]/build\_timeout in evacuate tests
+* Update mailinglist from dev to discuss
+* Clean up header encoding handling in compute API
+* Remove utils.execute() from libvirt remotefs calls
+* Remove utils.execute() calls from xenapi
+* Create BDMs/tags in cell with instance when over-quota
+* Add secret=true to fixed\_key configuration parameter
+* Add functional regression test for bug 1806064
+* Fix sloppy initialization of the new disk ops semaphore
+* Revert "Add regression test for bug 1550919"
+* Use new \`\`initial\_xxx\_allocation\_ratio\`\` CONF
+* Remove placement perf check
+* Mention size limit on user data in docs
+* Transform scheduler.select\_destinations notification
+* SIGHUP n-cpu to clear provider tree cache
+* libvirt: Refactor handling of PCIe root ports
+* Fix misuse of assertTrue
+* Make [cinder]/catalog\_info no longer require a service\_name
+* Remove get\_node\_uuid
+* Restore nova-consoleauth to install docs
+* Change the default values of XXX\_allocation\_ratio
+* Remove Placement API reference
+* Always read-deleted=yes on lazy-load
+* Refactor TestEvacuateDeleteServerRestartOriginalCompute
 * Fix InstanceNotFound during \_destroy\_evacuated\_instances
-* Add functional regression test for bug 1794996
+* Give drop\_move\_claim() correct docstring
+* Add missing ws seperator between words
+* Drop cruft code for all\_tenants behaviour
+* Remove ironic/pike note from \*\_allocation\_ratio help
+* Use links to placement docs in nova docs
 * Add a bug tag for nova doc
-* Remove unnecessary redirect
-* Add description of custom resource classes
-* Migrate nova v2.0 legacy job to zuulv3
-* Use long\_rpc\_timeout in select\_destinations RPC call
-* Imported Translations from Zanata
-* Don't use private interface in oslo.service
-* Default embedded instance.flavor.is\_public attribute
-* Make supports\_direct\_io work on 4096b sector size
+* Add I/O Semaphore to limit concurrent disk ops
+* Remove NovaException logging from scatter\_gather\_cells
+* Transform compute\_task notifications
+* Add HPET timer support for x86 guests
 * Consider root id is None in the database case
-* Add recreate test for bug 1799892
-* Handle unicode characters in migration params
+* Remove v1 check in Cinder client version lookup
+* Add CellsV2 FAQ about API design decisions
+* Use long\_rpc\_timeout in select\_destinations RPC call
+* Fix server query examples
+* Nix refs to ResourceProvider obj from libvirt UT
+* Skip double word hacking test
+* Fix regression in glance client call
+* Add description of custom resource classes
+* Make \_instances\_cores\_ram\_count() be smart about cells
+* Make supports\_direct\_io work on 4096b sector size
+* modify the avaliable link
+* api-ref: Add a description about sort order
+* Add debug logs when doubling-up allocations during scheduling
+* Delete NeutronLinuxBridgeInterfaceDriver
 * Mention meta key suffix in tenant isolation with placement docs
+* libvirt: change "Ignoring supplied device name" warning to info
+* Fix a help string in nova-manage
+* Use SleepFixture instead of mocking \_ThreadingEvent.wait
+* remove mocks of oslo.service private members
 * Harden placement init under wsgi
-
-18.0.3
-------
-
-* Properly track local root disk usage during moves
-* Add regression test for bug 1796737
-* Provide allocation\_ratio/reserved amounts from update\_provider\_tree()
-* Add functional recreate test for bug 1799727
-* Add nova-status upgrade check for consoles
+* Fix version details API does not return 200 OK
+* Add a link to the doc contrib guide
+* Improve formats of the Compute API guide
+* Remove LazyLoad of Scheduler Clients
+* Allow resource\_provider\_association\_refresh=0
+* prevent common kwargs from glance client failure
+* Fix support matrix for VMware UEFI support
+* Add bandwidth related standard resource classes
+* Add requested\_resources field to RequestSpec
+* Add request\_spec.RequestGroup versioned object
+* Update compute API.get() stubs in test\_access\_ips
+* Update compute API.get() stubs for test\_disk\_config
+* Update compute API.get() stubs for test\_\*security\_groups
+* Update compute API.get() stubs in test\_server\_actions
+* Update compute API.get() stubs in test\_serversV21
+* Update compute API.get() mocks in test\_server\_metadata
+* Convert exception messages to strings
+* Trivial: add reminder to update Tempest's scheduler\_enabled\_filters
+* Update the description to make it more accuracy
+* Pass disk\_info dict to libvirt\_info
+* Fix libvirt volume tests passing invalid disk\_info
+* Default embedded instance.flavor.is\_public attribute
+* [Trivial Fix] Correct spelling error of "should" and "resource"
+* Clean up cpu\_shared\_set config docs
+* quota: remove defaults kwarg in get\_project\_quotas
+* quota: remove QuotaEngine.register\_resources()
+* PowerVM upt parity for reshaper, DISK\_GB reserved
+* Minimal construct plumbing for nova service-list when a cell is down
+* Minimal construct plumbing for nova show when a cell is down
+* Refactor scatter-gather utility to return exception objects
+* Minimal construct plumbing for nova list when a cell is down
+* Modify get\_by\_cell\_and\_project() to get\_not\_deleted\_by\_cell\_and\_project()
 * Explain cpu\_model\_extra\_flags and nested guest support
-* Add rolling upgrade info to enable\_consoleauth workaround reno
+* Run negative server moving tests with nested RPs
+* Kill @safe\_connect in \_get\_provider\_traits
 * libvirt: Avoid setting MTU during live migration if unset
 * Add tests for bug #1800511
+* No longer call \_normalize\_inventory\_from\_cn\_obj from upt flow
+* Provide allocation\_ratio/reserved amounts from update\_provider\_tree()
+* Fix nits in I7cbd5d9fb875ebf72995362e0b6693492ce32051
+* tox: Stop build \*all\* docs in 'docs'
+* Fix min config value for shutdown\_timeout option
 * Fix os-simple-tenant-usage result order
-* Fix up compute rpcapi version for pike release
-* Ensure attachment cleanup on failure in driver.pre\_live\_migration
-* Move live\_migration.pre.start to the start of the method
+* Add recreate test for bug 1799892
+* Add nova-status upgrade check for consoles
+* PowerVM: update\_provider\_tree() (compatible)
+* Add functional regression test for bug 1794996
+* Add volume-backed evacuate test
+* Add post-test hook for testing evacuate
+* Cleanups for the scheduler code
+* Use RequestSpec.user\_id in scheduler.utils.claim\_resources
+* Remove restart\_scheduler\_service() method
+* Drop legacy live migrate allocation compat code
+* Reject forced move with nested source allocation
+* Add API ref guideline for examples
+* api-ref: Add descriptions of error cases
+* api-ref: Remove unnecessary minimum microversion
+* Add a hacking rule for deprecated assertion methods
+* Make CellDatabases fixture reentrant
+* Add more documentation for online\_data\_migrations CLI
+* Add functional recreate test for bug 1799727
+* quota: remove default kwarg on get\_class\_quotas()
+* Fix ironic client ironic\_url deprecation warning
+* Consider allocations invovling child providers during allocation cleanup
+* quota: remove QuotaDriver.destroy\_all\_by\_project()
+* Add restrictions on updated\_at when getting instance action records
+* Add restrictions on updated\_at when getting migrations
+* quota: remove unused Quota driver methods
+* quota: remove unused code
+* Add regression test for bug 1550919
+* Fix test bug when host doesn't have /etc/machine-id
 * conductor: Recreate volume attachments during a reschedule
 * Add regression test for bug#1784353
 * fixtures: Track volume attachments within CinderFixtureNewAttachFlow
-* Update resources once in update\_available\_resource
-* Don't persist RequestSpec.requested\_destination
-* Add regression test for bug 1797580
-* Handle online\_data\_migrations exceptions
+* Fix up compute rpcapi version for pike release
+* Rename tempest-nova job to follow conventions
+* Convert legacy-tempest-dsvm-neutron-src-oslo.versionedobjects job
+* Drop legacy cold migrate allocation compat code
+* Add debug logs for when provider inventory changes
+* Log the operation when updating generation in ProviderTree
+* Document each libvirt.sysinfo\_serial choice
+* Use tempfile for powervm config drive
+* Remove the CachingScheduler
+* Ensure attachment cleanup on failure in driver.pre\_live\_migration
+* Use assertRegex instead of assertRegexpMatches
+* Remove the extensions framework from wsgi.py
+* Remove more code related to extensions and testing
+* Remove the caching the resource on Request object
+* Fix block\_device\_mapping\_v2 mention in server create API reference
+* Fix typo in libvirt.hw\_machine\_type help
+* Bump os-brick version to 2.6.1
 * Ignore uuid if already set in ComputeNode.update\_from\_virt\_driver
-* Fix NoneType error in \_notify\_volume\_usage\_detach
 * Fix formatting non-templated cell URLs with no config
 * Use unique consumer\_id when doing online data migration
 * Add recreate test for bug 1798163
+* Handle online\_data\_migrations exceptions
+* Remove duplicate legacy-tempest-dsvm-multinode-full job
 * Handle volume API failure in \_post\_live\_migration
+* Move live\_migration.pre.start to the start of the method
+* Add some more docs for upgrade checkers
+* Don't persist RequestSpec.requested\_destination
+* Add microversion 2.67 to rest api version history
+* Deprecate the nova-xvpvncproxy service
+* Deprecate the nova-console service
+* doc: Add minimal documentation for MKS consoles
+* doc: Add minimal documentation for RDP consoles
+* doc: Rewrite the console doc
+* doc: update metadata service doc
+* Migrate nova v2.0 legacy job to zuulv3
+* Fix deprecated base64.decodestring warning
+* Fix NoneType error in \_notify\_volume\_usage\_detach
+* Zuul: Update barbican experimental job
+* Increment versioning with pbr instruction
+* Add regression test for bug 1797580
+* Use tempest-pg-full
+* Add microversion 2.67 to support volume\_type
+* Add compute API validation for when a volume\_type is requested
+* Add compute version 36 to support \`\`volume\_type\`\`
 * Use nova-consoleauth only if workaround enabled
-* Handle IndexError in \_populate\_neutron\_binding\_profile
-* Replace usage of get\_legacy\_facade() with get\_engine()
-* Time how long select\_destinations() takes in conductor
-* [stable-only] Add report\_ironic\_standard\_resource\_class\_inventory option
-* Imported Translations from Zanata
-* Set defult value of num\_nvme\_discover\_tries=5
-* Handle missing marker during online data migration
-* De-dupe subnet IDs when calling neutron /subnets API
+* fix "you" typo
+* Skip \_remove\_deleted\_instances\_allocations if compute is new
+* Replace openSUSE experimental check with newer version
+* Transform volume.usage notification
+* api-ref: Replace non UUID string with UUID
+* Remove useless TODO section
+* api-ref: Remove a description in servers-actions.inc
+* Make ResourceTracker.tracked\_instances a set
+* Properly track local root disk usage during moves
+* Add regression test for bug 1796737
+* Fix missing import in test\_compute\_mgr
+* Move test.nested to utils.nested\_contexts
+* conf: Deprecated 'config\_drive\_format'
+* Fix nits in choices documentation
+* Remove an unnecessary duplicate flag
 * Not set instance to ERROR if set\_admin\_password failed
-
-18.0.2
-------
-
+* De-dupe subnet IDs when calling neutron /subnets API
+* Handle missing marker during online data migration
+* Run ServerMovingTests with nested resources
+* Refactor allocation checking in functional tests
+* Use provider tree in virt FakeDriver
+* Enable nested allocation candidates in scheduler
+* consumer gen: support claim\_resources
+* api-ref: Move the evacuate action to admin action
+* Add scatter-gather-single-cell utility
+* Handle IndexError in \_populate\_neutron\_binding\_profile
+* Fix logging parameter in \_populate\_pci\_mac\_address
+* Skip test\_parallel\_evacuate\_with\_server\_group until fixed
+* doc: fix and clarify --block-device usage in user docs
+* Placement: Remove usage of get\_legacy\_facade()
+* conf: Convert 'live\_migration\_inbound\_addr' to HostAddressOpt
+* conf: Gather 'live\_migration\_scheme', 'live\_migration\_inbound\_addr'
+* VMware: Live migration of instances
+* Remove redundant irrelevant-files from neutron-tempest-linuxbridge
+* Add hide server address tests in test\_serversV21.py
+* Fix neutron-tempest-linuxbridge irrelevant-files
+* Raise error on timeout in wait\_for\_versioned\_notifications
+* Replace usage of get\_legacy\_facade() with get\_engine()
+* Add volume\_type field to BlockDeviceMapping object
+* Remove unnecessary redirect
+* Update doc
 * Fix stacktraces with redis caching backend
-* Null out instance.availability\_zone on shelve offload
-* nova-manage - fix online\_data\_migrations counts
+* remove commented-out code
 * Use INFO for logging no allocation candidates
-* placement: Always reset conf.CONF when starting the wsgi app
-* Ignore VirtDriverNotReady in \_sync\_power\_states periodic task
+* Don't emit warning when ironic properties are zero
+* Null out instance.availability\_zone on shelve offload
+* Follow up for Ie991d4b53e9bb5e7ec26da99219178ab7695abf6
+* Follow up for Iba230201803ef3d33bccaaf83eb10453eea43f20
+* Follow up for Ib6f95c22ffd3ea235b60db4da32094d49c2efa2a
+* nova-manage - fix online\_data\_migrations counts
+* Add attach kwarg to base/nova-net allocate\_for\_instance methods
+* consumer gen: more tests for delete allocation cases
+* Pick next minimum libvirt / QEMU versions for "T" release
 * Enforce case-sensitive hostnames in aggregate host add
 * Revert "Make host\_aggregate\_map dictionary case-insensitive"
-* Explicitly fail if trying to attach SR-IOV port
-* Wait for network-vif-plugged on resize revert
-* Validate transport\_url in nova-manage cell\_v2 commands
+* api-ref: add 'migrations' param to GET /os-migrations
+* Option "scheduler\_default\_filters" is deprecated
+* consumer gen: move\_allocations
+* doc:update virtual gpu doc
+* Consumer gen: remove\_provider\_from\_instance\_allocation
+* Consumer gen support for put allocations
+* Consumer gen support for delete instance allocations
+* api-ref: Fix wrong bold decoration
+* placement: Always reset conf.CONF when starting the wsgi app
+* Set defult value of num\_nvme\_discover\_tries=5
+* Rename "polling\_changes-since\_parameter.rst"
+* Imported Translations from Zanata
+* Ignore VirtDriverNotReady in \_sync\_power\_states periodic task
 * nova-status - don't count deleted compute\_nodes
-* Optimize AZ lookup during schedule\_and\_build\_instances
-* Delete instance\_id\_mappings record in instance\_destroy
+* libvirt: fix disk\_bus handling for root disk
+* Remove deprecated nova-consoleauth reference from doc
+* Imported Translations from Zanata
+* Add get\_by\_cell\_and\_project() method to InstanceMappingList
+* Making instance/migration listing skipping down cells configurable
+* ironic: stop hammering ironic API in power sync loop
+* Nix update\_instance\_allocation, \_allocate\_for\_instance
 * Filter deleted computes from get\_all\_by\_uuids()
-
-18.0.1
-------
-
-* XenAPI/Stops the migration of volume backed VHDS
-* libvirt: Use os.stat and os.path.getsize for RAW disk inspection
-* Fix soft deleting vm fails after "nova resize" vm
-* hyperv: Cleans up live migration Planned VM
-* Fix service list for disabled compute using MC driver
-* Refix disk size during live migration with disk over-commit
-* Update RequestSpec.flavor on resize\_revert
-* [placement] split gigantor SQL query, add logging
+* Fix missing specifying doctrees directory
+* libvirt: Drop MIN\_LIBVIRT\_PF\_WITH\_NO\_VFS\_CAP\_VERSION
+* Remove an unnecessary comment
+* Mention SR-IOV cold migration limitation in admin docs
+* Add contributor guide for upgrade status checks
+* libvirt: mdevs returning parent and vendor PCI info
+* Remove deprecated hide\_server\_address\_states option
+* Resource retrieving: add changes-before filter
+* cells: Be explicit in docs about service restarts
+* doc trivial: additional info to admin-password-injection
+* Add missing backticks in nova-manage docs
+* Fix some typos in nova api ref doc
+* Transform libvirt.error notification
+* Remove mox in test\_compute\_api.py (4)
+* Remove mox in libvirt/test\_driver.py (6)
+* Refactor NeutronFixture
+* libvirt: Use 'virt' as the default machine type for ARMv7
+* add caching to \_build\_regex\_range
+* Allow ability for non admin users to use all filters on server list
+* Rename changes-since test sample file
+* remove virt driver requires\_allocation\_refresh
+* Fix docs and add functional test for AggregateMultiTenancyIsolation
+* Fix mock.patch usage in unit tests
+* Fix evacuate logging
+* conf: Use new-style choice values
 * Follow devstack-plugin-ceph job rename
+* Fix resource tracker updates during instance evacuation
+* Cleanup zuul.yaml
+* add python 3.6 unit test job
+* switch documentation job to new PTI
 * import zuul job settings from project-config
+* fix a spelling error
+* Update docs for live\_migration\_progress\_timeout option
+* Add an example to add more pci devices in nova.conf
+* Fix formatting in changes-since guide
 * Do not dump all instances in the scheduler
+* Use six.string\_types to improve python2/3 compatibility
+* doc: update info for hypervisors
+* fup: Fix import order and test nit
+* Remove redundant image GET call in \_do\_rebuild\_instance
 * Configure placement DB context manager for nova-manage/status
-* placement: use simple code paths when possible
-* Fix a failure to format config sample
-* Make scheduler.utils.setup\_instance\_group query all cells
-* Fix nova-status "\_check\_resource\_providers" check
+* Use uuidsentinel from oslo.utils
 * Fix DB archiver AttributeError due to wrong table name attribute used
-* Add functional test for affinity with multiple cells
+* Fix nova-status "\_check\_resource\_providers" check
+* Fix TypeError in nova-manage cell\_v2 list\_cells
 * Document unset/reset wrinkle for \*\_allocation\_ratio options
-* Don't persist zero allocation ratios in ResourceTracker
-* libvirt: skip setting rx/tx queue sizes for not virto interfaces
-* libvirt: Always escape IPv6 addresses when used in migration URI
-* hardware: fix memory check usage for small/large pages
-* Don't use '\_TransactionContextManager.\_async'
+* Docs: update link for remote debugging
+* Removing pip-missing-reqs from default tox jobs
+* Fix a failure to format config sample
+* Other host allocs may appear in gafpt during evac
 * Move conductor wait\_until\_ready() delay before manager init
-* Fix image-defined numa claims during evacuate
+* Don't persist zero allocation ratios in ResourceTracker
+* hardware: fix memory check usage for small/large pages
+* Fix nits: Compute: Handle reshaped provider trees
+* Fix reshaper report client functonal test nits
+* Document differences and similaries between extra specs and hints
+* Combine error handling blocks in \_do\_build\_and\_run\_instance
+* Time how long select\_destinations() takes in conductor
+* Add encrypted volume support to feature matrix docs
+* Remove old check\_attach version check in API
 * Delete instance\_group\_member records from API DB during archive
+* Add functional test for live migrate with anti-affinity group
+* Revert "libvirt: add method to configure migration speed"
+* (Re)start caching scheduler after starting computes in tests
 * Restart scheduler in TestNovaManagePlacementHealAllocations
+* [placement] Make \_ensure\_aggregate context not independent
+* Send soft\_delete from context manager
+* Transform missing delete notifications
+* doc: add info how to troubleshoot vmware specific problems
 * Fix a broken conf file description in networking doc
-
-18.0.0
-------
-
-* Remove noisy DEBUG log
+* Mention (unused) RP generation in POST /allocs/{c}
+* Fail heal\_allocations if placement is borked
+* reshaper gabbit: Nix comments re doubled max\_unit
+* Do test\_reshape with an actual startup
+* Compute: Handle reshaped provider trees
+* Revert "Don't use '\_TransactionContextManager.\_async'"
+* Don't use '\_TransactionContextManager.\_async'
+* libvirt: skip setting rx/tx queue sizes for not virto interfaces
+* Make monkey patch work in uWSGI mode
+* privsep: Handle ENOENT when checking for direct IO support
+* [placement] split gigantor SQL query, add logging
+* Optimize global marker re-lookup in multi\_cell\_list
+* Record cell success/failure/timeout in CrossCellLister
+* Make instance\_list perform per-cell batching
+* Update volume-attachment API url in policies
+* Fix race condition in reshaper handler
+* Make scheduler.utils.setup\_instance\_group query all cells
+* Deprecate Core/Ram/DiskFilter
+* Document no content on POST /reshaper 204
+* api-ref: add a warning about calling swap volume directly
+* api-ref: fix volume attachment update policy note
+* Report client: update\_from\_provider\_tree w/reshape
+* Report client: \_reshape helper, placement min bump
+* Report client: get\_allocations\_for\_provider\_tree
+* Report client: Real get\_allocs\_for\_consumer
+* List instances from all cells explicitly
+* Batch results per cell when doing cross-cell listing
+* doc: Note NUMA topology requirements for numa-aware-vswitches
+* api: Remove unnecessary default parameter
+* hyperv: Cleans up live migration Planned VM
 * Correct the release notes related to nova-consoleauth
+* tests: Create functional libvirt test base class
+* Fix create\_resource\_provider docstring
+* tests: Move mocking to setUp
+* Remove noisy DEBUG log
+* Make get\_allocations\_for\_resource\_provider raise
+* reshaper: Look up provider if not in inventories
+* [placement] Add functional test to verify presence of policy
+* Normalize dashless 'resource provider create' uuid
+* [placement] Add /reshaper handler for POST
+* Clarify which context is used by do\_query()
+* Make RecordWrapper record RequestContext and expose cell\_uuid
+* Stash the cell uuid on the context when targeting
+* Make CELL\_TIMEOUT a constant
+* [placement] Regex consts for placement schema
+* Wait for network-vif-plugged on resize revert
+* libvirt: Always escape IPv6 addresses when used in migration URI
+* Move str to six.string\_types
 * libvirt: Don't react to VIR\_DOMAIN\_EVENT\_SUSPENDED\_MIGRATED events
-* Handle binding\_failed vif plug errors on compute restart
+* Set policy\_opt defaults in placement deploy unit test
+* Explicitly fail if trying to attach SR-IOV port
 * Filter out instances without a host when populating AZ
-* Update ssh configuration doc
-
-18.0.0.0rc2
------------
-
+* Set policy\_opt defaults in placement gabbi fixture
+* Fix soft deleting vm fails after "nova resize" vm
 * Use placement microversion 1.26 in update\_from\_provider\_tree
+* Remove ChanceScheduler
+* Doc: PowerVM does support shelve
+* comment correction for libvirt multiattach
+* Remove the deprecated API extensions policies
+* Update contributor guide for Stein
 * Add zvm CI information
 * Add zvm admin intro and hypervisor information
+* Update api-guide and api-ref to be clear about forced-down
+* Making consistent used of GiB and MiB in API ref
+* placement: use single-shot INSERT/DELETE agg
+* Add trait query to placement perf check
+* Add explanatory prefix to post\_test\_perf output
+* Py3 fix in fake image service
+* use static pages for mitaka and newton release notes
+* Revisons on notifications doc
+* VMware: add missing os types in vSphere sdk 6.5
+* Ironic: report 0 for vcpus/memory\_mb/disk\_gb resources
+* Remove blacklisted py3 xen tests
+* Add placement perf info gathering hook to end of nova-next
+* Fix service list for disabled compute using MC driver
+* Delete instance\_id\_mappings record in instance\_destroy
+* Add functional test for affinity with multiple cells
+* [placement] api-ref: Add missing aggregates example
+* Remove mox in libvirt/test\_driver.py (5)
 * add zvm into support matrix
-* placement: ignore policy scope check failures if not enforcing scope
+* Trivial fix to remove extra 'will' on microversion doc
+* Imported Translations from Zanata
+* Handle unicode characters in migration params
+* placement: use simple code paths when possible
+* Test case for multiple forbidden traits
+* Adds a test for \_get\_provider\_ids\_matching()
+* Make Xen code py3-compatible
 * Revert "libvirt: slow live-migration to ensure network is ready"
+* improve migration script
+* placement: ignore policy scope check failures if not enforcing scope
+* api-ref: fix GET /flavors?is\_public description
+* Update reno for stable/rocky
+* Remove patching the mock lib
 * block\_device: Rollback volumes to in-use on DeviceDetachFailed
-* Update UPPER\_CONSTRAINTS\_FILE for stable/rocky
-* Update .gitreview for stable/rocky
+* Quota details for key\_pair "in\_use" is 0
+* Add additional info to resource provider aggregates update API
 
 18.0.0.0rc1
 -----------
 
+* Handle binding\_failed vif plug errors on compute restart
+* Fix image-defined numa claims during evacuate
 * Add a prelude release note for the 18.0.0 Rocky GA
+* Nix 'new in 1.19' from 1.19 sections for rp aggs
+* libvirt: Use os.stat and os.path.getsize for RAW disk inspection
 * Trivial fix on migration doc
 * [placement] api-ref: add description for 1.29
 * Update the parameter explain when updating a volume attachment
+* Update ssh configuration doc
 * Update nova network info when doing rebuild for evacuate operation
 * Docs: Add guide to migrate instance with snapshot
+* Update compute rpc version alias for rocky
 * Add the guideline to write API reference
 * get provider IDs once when building summaries
 * Remove Neutron MetaAPIProxy from cellsv2-layout
@@ -222,26 +863,33 @@ CHANGES
 * Fix bad links for admin-guide
 * api-ref: Add descriptions for rebuild
 * Add microversion info in the os-server-groups API samples
+* Update really old comments about vmware hosts managing multiple nodes
 * doc: mark the max microversion for rocky
 * Fix resize revert to use non-legacy alloc handling
 * api-ref: fix min\_version for parent\_provider\_uuid in responses
 * [placement] Add version directives in the history doc
 * Use common functions in granular fixture
 * Fix none-ascii char in doc
+* Update resources once in update\_available\_resource
 * Define irrelevant-files for tempest-full-py3 job
 * Add tempest-slow job to run the tempest slow tests
 * Not use project table for user table
 * Adds a test for getting allocations API
+* Update RequestSpec.flavor on resize\_revert
+* Use CONF.long\_rpc\_timeout in post\_live\_migration\_at\_destination
+* Optimize AZ lookup during schedule\_and\_build\_instances
 * [placement] ensure\_rc\_cache only at start of process
 * Remove unused flavor\_delete\_info() method
 * Reno for notification-transformation-rocky
 * Deprecate upgrade\_levels options for deprecated/removed services
 * [placement] Move resource\_class\_cache into placement hierarchy
 * [placement] Debug log per granular request group
+* Fix nits in resource\_provider.py
 * Remove unused request API sample template
 * Grease some more tests hitting RetryDecorator
 * Scrub hw:cpu\_model from API samples
 * Grease test\_try\_deallocate\_network\_retry\_direct
+* libvirt: guest: introduce blockStats instead of domain.blockStats
 * Improve NeutronFixture and remove unncessary stubbing
 * Remove unused stubbing function from test
 * doc: fix resize user guide link
@@ -356,6 +1004,7 @@ CHANGES
 * [placement] Add gabbi coverage for an inventory change
 * clarify usage of upgrade\_levels group
 * Fix confusing log message in scheduler
+* libvirt: remove unused attribute driver for LibvirtConfigNodeDevice
 * Fix the incorrect description and sample
 * Transform metrics.update notification
 * update tox venv env to install all requirements
@@ -504,6 +1153,7 @@ CHANGES
 * [placement] Add test demonstrating bug 1778743
 * conf: libvirt: Make \`/dev/urandom\` the default for 'rng\_dev\_path'
 * Skip ServerShowV247Test.test\_update\_rebuild\_list\_server in nova-cells-v1 job
+* libvirt: Drop MIN\_LIBVIRT\_VHOSTUSER\_MQ
 * Fix CLI docs for nova-manage api\_db commands
 * Update API reference for os-floating-ip-pools
 * Fix API reference for os-floating-ip-dns
@@ -550,6 +1200,7 @@ CHANGES
 * Be graceful about vif plugging in early ironic driver startup
 * Mention nova-status upgrade check CLI in upgrade doc
 * Add information of deprecation nova-network in system-admin.rst
+* Validate transport\_url in nova-manage cell\_v2 commands
 * Add check if neutron "binding-extended" extension is available
 * Wait for network-vif-plugged before starting live migration
 * Don't heal allocations for deleted servers
@@ -847,6 +1498,7 @@ CHANGES
 * log stale allocations as WARNING instead of DEBUG
 * Make host\_manager use scatter-gather and ignore down cells
 * Make service all-cells min version helper use scatter-gather
+* Simplify logic in get\_enforcer
 * Fix tox -e docs
 * placement: resource requests for nested providers
 * Add host/hostId to instance action events API
@@ -972,6 +1624,7 @@ CHANGES
 * Remove mox in unit/virt/xenapi/test\_vm\_utils.py (2)
 * Remove mox in unit/virt/xenapi/test\_vm\_utils.py (1)
 * make metadata doc up to date
+* Update port device\_owner when unshelving
 * Log a warning and add nova-status check for old API service versions
 * Avoid dumping stack on BuildAbortException
 * Fix comments at the 'save' method of objects.Instance
@@ -1135,6 +1788,7 @@ CHANGES
 * Make nova-cells-v1 run with neutron
 * ironic: Get correct inventory for deployed node
 * Marker reset option for nova-manage map\_instances
+* XenAPI/Stops the migration of volume backed VHDS
 * placement: Return new provider from POST /rps
 * placement: generation in provider aggregate APIs
 * Change TestNewtonCellsCheck to not rely on objects
@@ -1328,6 +1982,7 @@ CHANGES
 * Remove microversion fallback code from report client
 * Fix wrong link for "Manage Flavors" in CPU topologies doc
 * Make sure that we have usable input for graphical console
+* Use check\_string\_length from oslo\_utils
 * update the description of hypervisor statistics response
 * fix misspelling of 'projectUser'
 * Test case: new standard resource class unusable
@@ -1342,6 +1997,7 @@ CHANGES
 * [placement] Add sending global request ID in post
 * Update cells v2 layout doc caveats for Queens
 * Not use thread alloc policy for emulator thread
+* Refix disk size during live migration with disk over-commit
 * Zuul: Remove project name
 * Doc: Nix os-traits link from POST resource\_classes
 * Only log during pop retry phase
@@ -1623,6 +2279,7 @@ CHANGES
 * Fix 4 doc typos
 * Fix false positive server group functional tests
 * Updated from global requirements
+* api-ref: sort parameters for limits, quotas and quota classes
 * XenAPI: create vGPU for instance
 * update\_cell allows more than once cell to have the same db/transport url
 * [placement] Add x-openstack-request-id in API ref

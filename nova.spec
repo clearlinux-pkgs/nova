@@ -5,12 +5,12 @@
 # Source0 file verified with key 0x1A541148054E9E38 (infra-root@openstack.org)
 #
 Name     : nova
-Version  : 18.2.0
-Release  : 157
-URL      : http://tarballs.openstack.org/nova/nova-18.2.0.tar.gz
-Source0  : http://tarballs.openstack.org/nova/nova-18.2.0.tar.gz
+Version  : 19.0.0
+Release  : 158
+URL      : http://tarballs.openstack.org/nova/nova-19.0.0.tar.gz
+Source0  : http://tarballs.openstack.org/nova/nova-19.0.0.tar.gz
 Source1  : nova.tmpfiles
-Source99 : http://tarballs.openstack.org/nova/nova-18.2.0.tar.gz.asc
+Source99 : http://tarballs.openstack.org/nova/nova-19.0.0.tar.gz.asc
 Summary  : Cloud computing fabric controller
 Group    : Development/Tools
 License  : Apache-2.0
@@ -32,7 +32,7 @@ Requires: cursive
 Requires: decorator
 Requires: enum34
 Requires: eventlet
-Requires: futures
+Requires: futurist
 Requires: greenlet
 Requires: iso8601
 Requires: jsonschema
@@ -63,6 +63,7 @@ Requires: oslo.reports
 Requires: oslo.rootwrap
 Requires: oslo.serialization
 Requires: oslo.service
+Requires: oslo.upgradecheck
 Requires: oslo.utils
 Requires: oslo.versionedobjects
 Requires: osprofiler
@@ -146,15 +147,14 @@ python3 components for the nova package.
 
 
 %prep
-%setup -q -n nova-18.2.0
+%setup -q -n nova-19.0.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1553485348
-export LDFLAGS="${LDFLAGS} -fno-lto"
+export SOURCE_DATE_EPOCH=1554949175
 export MAKEFLAGS=%{?_smp_mflags}
 python3 setup.py build
 
