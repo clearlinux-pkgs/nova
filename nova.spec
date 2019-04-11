@@ -6,7 +6,7 @@
 #
 Name     : nova
 Version  : 19.0.0
-Release  : 158
+Release  : 159
 URL      : http://tarballs.openstack.org/nova/nova-19.0.0.tar.gz
 Source0  : http://tarballs.openstack.org/nova/nova-19.0.0.tar.gz
 Source1  : nova.tmpfiles
@@ -43,6 +43,7 @@ Requires: microversion_parse
 Requires: netaddr
 Requires: netifaces
 Requires: os-brick
+Requires: os-resource-classes
 Requires: os-service-types
 Requires: os-traits
 Requires: os-win
@@ -154,7 +155,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1554949175
+export SOURCE_DATE_EPOCH=1554990020
 export MAKEFLAGS=%{?_smp_mflags}
 python3 setup.py build
 
