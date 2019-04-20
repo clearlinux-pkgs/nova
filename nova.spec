@@ -6,7 +6,7 @@
 #
 Name     : nova
 Version  : 19.0.0
-Release  : 159
+Release  : 160
 URL      : http://tarballs.openstack.org/nova/nova-19.0.0.tar.gz
 Source0  : http://tarballs.openstack.org/nova/nova-19.0.0.tar.gz
 Source1  : nova.tmpfiles
