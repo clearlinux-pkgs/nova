@@ -5,12 +5,12 @@
 # Source0 file verified with key 0x1A541148054E9E38 (infra-root@openstack.org)
 #
 Name     : nova
-Version  : 19.0.0
-Release  : 160
-URL      : http://tarballs.openstack.org/nova/nova-19.0.0.tar.gz
-Source0  : http://tarballs.openstack.org/nova/nova-19.0.0.tar.gz
+Version  : 19.0.1
+Release  : 161
+URL      : http://tarballs.openstack.org/nova/nova-19.0.1.tar.gz
+Source0  : http://tarballs.openstack.org/nova/nova-19.0.1.tar.gz
 Source1  : nova.tmpfiles
-Source99 : http://tarballs.openstack.org/nova/nova-19.0.0.tar.gz.asc
+Source99 : http://tarballs.openstack.org/nova/nova-19.0.1.tar.gz.asc
 Summary  : Cloud computing fabric controller
 Group    : Development/Tools
 License  : Apache-2.0
@@ -88,14 +88,75 @@ Requires: taskflow
 Requires: tooz
 Requires: websockify
 Requires: zVMCloudConnector
+BuildRequires : Babel
+BuildRequires : Jinja2
+BuildRequires : Paste
+BuildRequires : PasteDeploy
+BuildRequires : Routes
+BuildRequires : SQLAlchemy
+BuildRequires : WebOb
 BuildRequires : buildreq-distutils3
+BuildRequires : castellan
+BuildRequires : cryptography
 BuildRequires : cursive
+BuildRequires : decorator
+BuildRequires : enum34
+BuildRequires : eventlet
+BuildRequires : futurist
+BuildRequires : greenlet
+BuildRequires : iso8601
+BuildRequires : jsonschema
+BuildRequires : keystoneauth1
+BuildRequires : keystonemiddleware
+BuildRequires : lxml
 BuildRequires : microversion_parse
+BuildRequires : netaddr
+BuildRequires : netifaces
+BuildRequires : os-brick
+BuildRequires : os-resource-classes
+BuildRequires : os-service-types
 BuildRequires : os-traits
+BuildRequires : os-win
+BuildRequires : os-xenapi
 BuildRequires : os_vif
+BuildRequires : oslo.cache
+BuildRequires : oslo.concurrency
+BuildRequires : oslo.config
+BuildRequires : oslo.context
+BuildRequires : oslo.db
+BuildRequires : oslo.i18n
+BuildRequires : oslo.log
+BuildRequires : oslo.messaging
+BuildRequires : oslo.middleware
+BuildRequires : oslo.policy
+BuildRequires : oslo.privsep
+BuildRequires : oslo.reports
+BuildRequires : oslo.rootwrap
+BuildRequires : oslo.serialization
+BuildRequires : oslo.service
+BuildRequires : oslo.upgradecheck
+BuildRequires : oslo.utils
+BuildRequires : oslo.versionedobjects
+BuildRequires : osprofiler
+BuildRequires : paramiko
 BuildRequires : pbr
 BuildRequires : prettytable
+BuildRequires : psutil
 BuildRequires : pypowervm
+BuildRequires : python-cinderclient
+BuildRequires : python-dateutil
+BuildRequires : python-glanceclient
+BuildRequires : python-neutronclient
+BuildRequires : requests
+BuildRequires : retrying
+BuildRequires : rfc3986
+BuildRequires : setuptools
+BuildRequires : six
+BuildRequires : sqlalchemy-migrate
+BuildRequires : stevedore
+BuildRequires : taskflow
+BuildRequires : tooz
+BuildRequires : websockify
 BuildRequires : zVMCloudConnector
 
 %description
@@ -148,14 +209,21 @@ python3 components for the nova package.
 
 
 %prep
-%setup -q -n nova-19.0.0
+%setup -q -n nova-19.0.1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1554990020
+export SOURCE_DATE_EPOCH=1559905953
+export AR=gcc-ar
+export RANLIB=gcc-ranlib
+export NM=gcc-nm
+export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 export MAKEFLAGS=%{?_smp_mflags}
 python3 setup.py build
 

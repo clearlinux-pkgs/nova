@@ -1,12 +1,80 @@
 CHANGES
 =======
 
+19.0.1
+------
+
+* Workaround missing RequestSpec.instance\_group.uuid
+* Add regression recreate test for bug 1830747
+* [ironic] Don't remove instance info twice in destroy
+* Block swap volume on volumes with >1 rw attachment
+* cleanup evacuated instances not on hypervisor
+* Fix live-migration when glance image deleted
+* docs: Don't version links to reno docs
+* Allow driver to properly unplug VIFs on destination on confirm resize
+* Move get\_pci\_mapping\_for\_migration to MigrationContext
+* Fixes multi-registry config in Quobyte driver
+* [stable-only] Improve the reno for consoleauth upgrade check
+* Disable limit if affinity(anti)/same(different)host is requested
+* Restore connection\_info after live migration rollback
+* libvirt: Do not reraise DiskNotFound exceptions during resize
+* Fix target used in nova.policy.check\_is\_admin
+* Stop logging traceback when skipping quiesce
+* Skip \_exclude\_nested\_providers() if not nested
+* Fix assert methods in unit tests
+* Fix retry of instance\_update\_and\_get\_original
+* Add functional confirm\_migration\_error test
+* Only call \_fill\_provider\_mapping if claim succeeds
+* Handle placement error during re-schedule
+* Fix exception type in test\_boot\_reschedule\_fill\_provider\_mapping\_raises
+* Reproduce bug #1819460 in functional test
+* Log when port resource is leaked during port delete
+* Use migration\_status during volume migrating and retyping
+* Exclude fake marker instance when listing servers
+* Add regression test for bug 1825034
+* Include all network devices in nova diagnostics
+* libvirt: Always disconnect volumes after libvirtError exceptions
+* libvirt: Stop ignoring unknown libvirtError exceptions during volume attach
+* Fix volume-backed resize with a smaller disk flavor
+* Fix help for ironic.peer\_list config
+* Add functional regression recreate test for bug 1825020
+* libvirt: Avoid using os-brick encryptors when device\_path isn't provided
+* AZ list performance optimization: avoid double service list DB fetch
+* xenapi/agent: Change openssl error handling
+* Do not perform port update in case of baremetal instance
+* Pass on region when we don't have a valid ironic endpoint
+* Create request spec, build request and mappings in one transaction
+* Fix {min|max}\_version in ironic Adapter setup
+* OpenDev Migration Patch
+* libvirt: set device address tag only if setting disk unit
+* Change a log level for overwriting allocation
+* libvirt: disconnect volume when encryption fails
+* Do not log a warning about not using compute monitors
+* doc: Capitalize keystone domain name
+* Delete allocations even if \_confirm\_resize raises
+
 19.0.0
 ------
 
 * Remove CellMappingPayload database\_connection and transport\_url fields
+* Don't warn on network-vif-unplugged event during live migration
 * Libvirt: gracefully handle non-nic VFs
+* Error out migration when confirm\_resize fails
+* Fix bug preventing forbidden traits from working
+* Adding tests to demonstrate bug #1821824
 * Add doc on VGPU allocs and inventories for nrp
+* Move create of ComputeAPI object in websocketproxy
+* Do not persist RequestSpec.ignore\_hosts
+* Add functional regression test for bug 1669054
+* Temporarily mutate migration object in finish\_revert\_resize
+* Add retry\_on\_deadlock to migration\_update DB API
+* doc: Fix openstack CLI command
+* Update instance.availability\_zone on revertResize
+* Add functional recreate test for bug 1819963
+* Fix incomplete instance data returned after build failure
+* Use Selection object to fill request group mapping
+* Override the 'get' method in DriverBlockDevice class
+* Eventlet monkey patching should be as early as possible
 * Replace openstack.org git:// URLs with https://
 * Update UPPER\_CONSTRAINTS\_FILE for stable/stein
 * Update .gitreview for stable/stein
