@@ -6,16 +6,17 @@
 #
 Name     : nova
 Version  : 19.0.1
-Release  : 162
+Release  : 163
 URL      : http://tarballs.openstack.org/nova/nova-19.0.1.tar.gz
 Source0  : http://tarballs.openstack.org/nova/nova-19.0.1.tar.gz
 Source1  : nova.tmpfiles
-Source99 : http://tarballs.openstack.org/nova/nova-19.0.1.tar.gz.asc
+Source2 : http://tarballs.openstack.org/nova/nova-19.0.1.tar.gz.asc
 Summary  : Cloud computing fabric controller
 Group    : Development/Tools
 License  : Apache-2.0
 Requires: nova-bin = %{version}-%{release}
 Requires: nova-config = %{version}-%{release}
+Requires: nova-data = %{version}-%{release}
 Requires: nova-license = %{version}-%{release}
 Requires: nova-python = %{version}-%{release}
 Requires: nova-python3 = %{version}-%{release}
@@ -160,13 +161,13 @@ BuildRequires : websockify
 BuildRequires : zVMCloudConnector
 
 %description
-This is a database migration repository.
-More information at
-https://sqlalchemy-migrate.readthedocs.io/en/latest/
+Team and repository tags
+        ========================
 
 %package bin
 Summary: bin components for the nova package.
 Group: Binaries
+Requires: nova-data = %{version}-%{release}
 Requires: nova-config = %{version}-%{release}
 Requires: nova-license = %{version}-%{release}
 
@@ -180,6 +181,14 @@ Group: Default
 
 %description config
 config components for the nova package.
+
+
+%package data
+Summary: data components for the nova package.
+Group: Data
+
+%description data
+data components for the nova package.
 
 
 %package license
@@ -215,8 +224,9 @@ python3 components for the nova package.
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1559905953
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1565632531
+export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
@@ -238,6 +248,11 @@ cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
 echo ----[ mark ]----
 mkdir -p %{buildroot}/usr/lib/tmpfiles.d
 install -m 0644 %{SOURCE1} %{buildroot}/usr/lib/tmpfiles.d/nova.conf
+## install_append content
+install -d -m 755 %{buildroot}/usr/share/defaults/nova
+mv %{buildroot}/usr/etc/nova/* %{buildroot}/usr/share/defaults/nova/
+rm -rf %{buildroot}/usr/etc
+## install_append end
 
 %files
 %defattr(-,root,root,-)
@@ -270,12 +285,15 @@ install -m 0644 %{SOURCE1} %{buildroot}/usr/lib/tmpfiles.d/nova.conf
 
 %files config
 %defattr(-,root,root,-)
-%config /usr/etc/nova/api-paste.ini
-%config /usr/etc/nova/rootwrap.conf
-%config /usr/etc/nova/rootwrap.d/api-metadata.filters
-%config /usr/etc/nova/rootwrap.d/compute.filters
-%config /usr/etc/nova/rootwrap.d/network.filters
 /usr/lib/tmpfiles.d/nova.conf
+
+%files data
+%defattr(-,root,root,-)
+/usr/share/defaults/nova/api-paste.ini
+/usr/share/defaults/nova/rootwrap.conf
+/usr/share/defaults/nova/rootwrap.d/api-metadata.filters
+/usr/share/defaults/nova/rootwrap.d/compute.filters
+/usr/share/defaults/nova/rootwrap.d/network.filters
 
 %files license
 %defattr(0644,root,root,0755)

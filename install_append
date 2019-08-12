@@ -1,7 +1,9 @@
-#install -d -m 755 %{buildroot}/usr/share/defaults/nova
+install -d -m 755 %{buildroot}/usr/share/defaults/nova
 #install -p -D -m 644 etc/nova/*.conf %{buildroot}/usr/share/defaults/nova/
 #install -p -D -m 644 etc/nova/*.ini %{buildroot}/usr/share/defaults/nova/
 #install -p -D -m 644 etc/nova/*.json %{buildroot}/usr/share/defaults/nova/
+mv %{buildroot}/usr/etc/nova/* %{buildroot}/usr/share/defaults/nova/
+rm -rf %{buildroot}/usr/etc
 #
 #install -d -m 755 %{buildroot}/usr/share/defaults/nova/
 #install -p -D -m 644 etc/nova/nova.conf.sample %{buildroot}/usr/share/defaults/nova/nova.conf
