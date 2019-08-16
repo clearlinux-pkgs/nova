@@ -1,9 +1,54 @@
 CHANGES
 =======
 
+19.0.2
+------
+
+* Don't generate service UUID for deleted services
+* Replace non-nova server fault message
+* Fix AttributeError in RT.\_update\_usage\_from\_migration
+* Add functional regression test for bug 1778305
+* Add functional recreate test for bug 1764556
+* Cleanup when hitting MaxRetriesExceeded from no host\_available
+* Add functional regression test for bug 1837955
+* Avoid logging traceback when detach device not found
+* Revert "[libvirt] Filter hypervisor\_type by virt\_type"
+* Handle Invalid exceptions as expected in attach\_interface
+* libvirt: move checking CONF.my\_ip to init\_host()
+* Restore RT.old\_resources if ComputeNode.save() fails
+* Replace joinedload\_all with joinedload
+* Add 'path' query parameter to console access url
+* Fix no propagation of nova context request\_id
+* Revert resize: wait for events according to hybrid plug
+* docs: Correct issues with 'openstack quota set' commands
+* Perf: Use dicts for ProviderTree roots
+* Fix GET /servers/detail host\_status performance regression
+* doc: Fix a parameter of NotificationPublisher
+* Stabilize unshelve notification sample tests
+* Ignore hw\_vif\_type for direct, direct-physical vNIC types
+* Drop source node allocations if finish\_resize fails
+* Add functional recreate test for regression bug 1825537
+* Init HostState.failed\_builds
+* libvirt: flatten rbd images when unshelving an instance
+* Grab fresh power state info from the driver
+* Fix type error on call to mount device
+* libvirt: Rework 'EBUSY' (SIGKILL) error handling code path
+* Remove redundant group host setup
+* Delete resource providers for all nodes when deleting compute service
+* Raise InstanceFaultRollback for UnableToMigrateToSelf from \_prep\_resize
+* Change InstanceFaultRollback handling in \_error\_out\_instance\_on\_exception
+* Fix python3 compatibility of rbd get\_fsid
+* Handle PortLimitExceeded in POST /servers/{server\_id}/os-interface
+* libvirt: Use SATA bus for cdrom devices when using Q35 machine type
+* Fix double word hacking test
+* Refresh instance network info on deletion
+* Avoid unnecessary joins in InstanceGroup.get\_hosts
+
 19.0.1
 ------
 
+* Noop CantStartEngineError in targets\_cell if API DB not configured
+* Reset the stored logs at each notification test steps
 * Workaround missing RequestSpec.instance\_group.uuid
 * Add regression recreate test for bug 1830747
 * [ironic] Don't remove instance info twice in destroy
