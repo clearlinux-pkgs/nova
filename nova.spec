@@ -6,7 +6,7 @@
 #
 Name     : nova
 Version  : 19.0.2
-Release  : 164
+Release  : 165
 URL      : http://tarballs.openstack.org/nova/nova-19.0.2.tar.gz
 Source0  : http://tarballs.openstack.org/nova/nova-19.0.2.tar.gz
 Source1  : nova.tmpfiles
@@ -159,11 +159,11 @@ BuildRequires : taskflow
 BuildRequires : tooz
 BuildRequires : websockify
 BuildRequires : zVMCloudConnector
+Patch1: 0001-Unfreeze-jsonschema.patch
 
 %description
-This is a database migration repository.
-More information at
-https://sqlalchemy-migrate.readthedocs.io/en/latest/
+Team and repository tags
+        ========================
 
 %package bin
 Summary: bin components for the nova package.
@@ -220,14 +220,14 @@ python3 components for the nova package.
 
 %prep
 %setup -q -n nova-19.0.2
+%patch1 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1565962613
-# -Werror is for werrorists
+export SOURCE_DATE_EPOCH=1566919015
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
