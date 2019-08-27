@@ -1,3 +1,0 @@
-# openstack Liberty
-# for more information check https://github.com/openstack/requirements/blob/master/global-requirements.txt
-watchurl=http://tarballs.openstack.org/nova/nova-(\d\d\.\d\.\d).tar.gz
