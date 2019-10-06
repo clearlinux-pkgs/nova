@@ -1,6 +1,41 @@
 CHANGES
 =======
 
+19.0.3
+------
+
+* Reduce scope of 'path' query parameter to noVNC consoles
+* Handle legacy request spec dict in ComputeTaskManager.\_cold\_migrate
+* Func test for migrate reschedule with pinned compute rpc
+* Make nova.compute.rpcapi.ComputeAPI.router a singleton
+* Add reno about nova-api eventlet monkey-patching and rabbitmq
+* libvirt: stub logging of host capabilities
+* Find instance in another cell during floating IP re-association
+* Trap and log errors from \_update\_inst\_info\_cache\_for\_disassociated\_fip
+* neutron: refactor nw info cache refresh out of associate\_floating\_ip
+* Fix a misuse of assertGreaterEqual
+* Fix race in \_test\_live\_migration\_force\_complete
+* Log notifications if assertion in \_test\_live\_migration\_force\_complete fails
+* Fixing broken links
+* doc: Fix a broken reference link
+* Fix rebuild of baremetal instance when vm\_state is ERROR
+* Remove descriptions of nonexistent hacking rules
+* doc: remove confusing docs about aggregate allocation ratios
+* Fix wrong assertions in unit tests
+* Fix 'has\_calls' method calls in unit tests
+* Add an issue releasenote for placement eventlet stall
+* Fix non-existent method of Mock
+* Restore soft-deleted compute node with same uuid
+* Add functional regression recreate test for bug 1839560
+* lxc: make use of filter python3 compatible
+* Fix misuse of nova.objects.base.obj\_equal\_prims
+* rt: only map compute node if we created it
+* Cache host to cell mapping in HostManager
+* Convert HostMapping.cells to a dict
+* Delete unused get\_all\_host\_states method
+* Retrun 400 if invalid query parameters are specified
+* Add useful error log when \_determine\_version\_cap raises DBNotAllowed
+
 19.0.2
 ------
 
@@ -53,6 +88,7 @@ CHANGES
 * Add regression recreate test for bug 1830747
 * [ironic] Don't remove instance info twice in destroy
 * Block swap volume on volumes with >1 rw attachment
+* Fix the server group "policy" field type in api-ref
 * cleanup evacuated instances not on hypervisor
 * Fix live-migration when glance image deleted
 * docs: Don't version links to reno docs
