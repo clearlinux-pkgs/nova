@@ -6,7 +6,7 @@
 #
 Name     : nova
 Version  : 19.0.3
-Release  : 166
+Release  : 167
 URL      : http://tarballs.openstack.org/nova/nova-19.0.3.tar.gz
 Source0  : http://tarballs.openstack.org/nova/nova-19.0.3.tar.gz
 Source1  : nova.tmpfiles
@@ -31,7 +31,6 @@ Requires: castellan
 Requires: cryptography
 Requires: cursive
 Requires: decorator
-Requires: enum34
 Requires: eventlet
 Requires: futurist
 Requires: greenlet
@@ -101,7 +100,6 @@ BuildRequires : castellan
 BuildRequires : cryptography
 BuildRequires : cursive
 BuildRequires : decorator
-BuildRequires : enum34
 BuildRequires : eventlet
 BuildRequires : futurist
 BuildRequires : greenlet
@@ -162,9 +160,8 @@ BuildRequires : zVMCloudConnector
 Patch1: 0001-Unfreeze-jsonschema.patch
 
 %description
-This is a database migration repository.
-More information at
-https://sqlalchemy-migrate.readthedocs.io/en/latest/
+Team and repository tags
+        ========================
 
 %package bin
 Summary: bin components for the nova package.
@@ -228,8 +225,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1570380697
-# -Werror is for werrorists
+export SOURCE_DATE_EPOCH=1571082176
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -245,7 +241,7 @@ python3 setup.py build
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/nova
-cp LICENSE %{buildroot}/usr/share/package-licenses/nova/LICENSE
+cp %{_builddir}/nova-19.0.3/LICENSE %{buildroot}/usr/share/package-licenses/nova/294b43b2cec9919063be1a3b49e8722648424779
 python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
@@ -301,7 +297,7 @@ rm -rf %{buildroot}/usr/etc
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/nova/LICENSE
+/usr/share/package-licenses/nova/294b43b2cec9919063be1a3b49e8722648424779
 
 %files python
 %defattr(-,root,root,-)
