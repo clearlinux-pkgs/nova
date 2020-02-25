@@ -6,11 +6,11 @@
 #
 Name     : nova
 Version  : 19.0.3
-Release  : 168
-URL      : http://tarballs.openstack.org/nova/nova-19.0.3.tar.gz
-Source0  : http://tarballs.openstack.org/nova/nova-19.0.3.tar.gz
+Release  : 169
+URL      : https://tarballs.openstack.org/nova/nova-19.0.3.tar.gz
+Source0  : https://tarballs.openstack.org/nova/nova-19.0.3.tar.gz
 Source1  : nova.tmpfiles
-Source2 : http://tarballs.openstack.org/nova/nova-19.0.3.tar.gz.asc
+Source2  : https://tarballs.openstack.org/nova/nova-19.0.3.tar.gz.asc
 Summary  : Cloud computing fabric controller
 Group    : Development/Tools
 License  : Apache-2.0
@@ -218,6 +218,7 @@ python3 components for the nova package.
 
 %prep
 %setup -q -n nova-19.0.3
+cd %{_builddir}/nova-19.0.3
 %patch1 -p1
 
 %build
@@ -225,7 +226,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1571082176
+export SOURCE_DATE_EPOCH=1582651035
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -250,8 +251,40 @@ mkdir -p %{buildroot}/usr/lib/tmpfiles.d
 install -m 0644 %{SOURCE1} %{buildroot}/usr/lib/tmpfiles.d/nova.conf
 ## install_append content
 install -d -m 755 %{buildroot}/usr/share/defaults/nova
+#install -p -D -m 644 etc/nova/*.conf %{buildroot}/usr/share/defaults/nova/
+#install -p -D -m 644 etc/nova/*.ini %{buildroot}/usr/share/defaults/nova/
+#install -p -D -m 644 etc/nova/*.json %{buildroot}/usr/share/defaults/nova/
 mv %{buildroot}/usr/etc/nova/* %{buildroot}/usr/share/defaults/nova/
 rm -rf %{buildroot}/usr/etc
+#
+#install -d -m 755 %{buildroot}/usr/share/defaults/nova/
+#install -p -D -m 644 etc/nova/nova.conf.sample %{buildroot}/usr/share/defaults/nova/nova.conf
+#install -p -D -m 644 etc/nova/nova-docker.conf.sample %{buildroot}/usr/share/defaults/nova/nova-docker.conf
+#install -p -D -m 644 etc/nova/nova-lkvm.conf.sample %{buildroot}/usr/share/defaults/nova/nova-lkvm.conf
+#
+#install -d -m 755 %{buildroot}/usr/share/nova/rootwrap.d
+##mv %{buildroot}/usr/share/defaults/nova/rootwrap.conf %{buildroot}/usr/share/nova/
+#install -p -D -m 640 etc/nova/rootwrap.d/*.filters %{buildroot}/usr/share/nova/rootwrap.d/
+#
+#install -d -m 750 %{buildroot}/usr/share/defaults/sudo/sudoers.d
+#install -p -D -m 440 etc/sudoers.d/nova.sudoers %{buildroot}/usr/share/defaults/sudo/sudoers.d/nova
+#
+#install -d -m 755 %{buildroot}/usr/lib/modules-load.d/
+#install -p -D -m 640 nbd.conf %{buildroot}/usr/lib/modules-load.d/
+#
+#install -m 0755 -d %{buildroot}/usr/share/httpd/cgi-bin/nova
+#cp nova/wsgi/*.py %{buildroot}/usr/share/httpd/cgi-bin/nova
+#
+#install -m 0755 -d %{buildroot}/usr/share/defaults/httpd/conf.d
+##install -p -D -m 644 nova/wsgi/nova-api-metadata.httpd %{buildroot}/usr/share/defaults/httpd/conf.d/nova-api-metadata.conf
+#install -p -D -m 644 nova/wsgi/nova-api.httpd  %{buildroot}/usr/share/defaults/httpd/conf.d/nova-api.template
+#
+#install -m 0755 -d %{buildroot}/usr/share/uwsgi/nova
+#cp nova/wsgi/*.ini %{buildroot}/usr/share/uwsgi/nova
+#
+#install -m 0755 -d %{buildroot}/usr/share/nginx/conf.d
+#install -p -D -m 644 nova/wsgi/nova-api-metadata.nginx %{buildroot}/usr/share/nginx/conf.d/nova-api-metadata.conf
+#install -p -D -m 644 nova/wsgi/nova-api.nginx %{buildroot}/usr/share/nginx/conf.d/nova-api.template
 ## install_append end
 
 %files
