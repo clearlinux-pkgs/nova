@@ -1,11 +1,64 @@
 CHANGES
 =======
 
+19.1.0
+------
+
+* Mask the token used to allow access to consoles
+* FUP for in-place numa rebuild
+* Disable NUMATopologyFilter on rebuild
+* Block rebuild when NUMA topology changed
+* Remove 'test\_cold\_migrate\_with\_physnet\_fails' test
+* Remove global state from the FakeDriver
+* libvirt: check job status for VIR\_DOMAIN\_EVENT\_SUSPENDED\_MIGRATED event
+* libvirt: remove conditional on VIR\_DOMAIN\_EVENT\_SUSPENDED\_POSTCOPY
+* Zuul v3: use devstack-plugin-nfs-tempest-full
+* block\_device: Copy original volume\_type when missing for snapshot based volumes
+* Do not update root\_device\_name during guest config
+* Improve metadata server performance with large security groups
+* Cache security group driver
+* compute: Use long\_rpc\_timeout in reserve\_block\_device\_name
+* [stable-only] Disable cinder-backup service in nova-next job
+* Replace time.sleep(10) with service forced\_down in tests
+* compute: Take an instance.uuid lock when rebooting
+* Join migration\_context and flavor in Migration.instance
+* Block deleting compute services with in-progress migrations
+* Add functional recreate revert resize test for bug 1852610
+* Add functional recreate test for bug 1852610
+* Add functional recreate test for bug 1829479 and bug 1817833
+* Use admin neutron client to see if instance has qos ports
+* Use admin neutron client to query ports for binding
+* Add BFV wrinkle to TestNovaManagePlacementHealAllocations
+* Add --instance option to heal\_allocations
+* Add --dry-run option to heal\_allocations CLI
+* Don't delete compute node, when deleting service other than nova-compute
+* Revert "openstack server create" to "nova boot" in nova docs
+* Remove redundant call to get/create default security group
+* Add regression test for bug 1824435
+* Add integration testing for heal\_allocations
+* Nova compute: add in log exception to help debug failures
+* Imported Translations from Zanata
+* Avoid error 500 on shelve task\_state race
+* Switch to opensuse-15 nodeset
+* Added openssh-client into bindep
+* libvirt: Ignore volume exceptions during post\_live\_migration
+* Fix listing deleted servers with a marker
+* Add functional regression test for bug 1849409
+* Fix unit of hw\_rng:rate\_period
+* Fix exception translation when creating volume
+* Stop sending bad values from libosinfo to libvirt
+* Error out interrupted builds
+* Functional reproduce for bug 1833581
+* Prevent init\_host test to interfere with other tests
+* Add functional test for resize crash compute restart revert
+
 19.0.3
 ------
 
+* Handle get\_host\_availability\_zone error during reschedule
 * Reduce scope of 'path' query parameter to noVNC consoles
 * Handle legacy request spec dict in ComputeTaskManager.\_cold\_migrate
+* Ignore sqla-migrate inspect.getargspec deprecation warnings on py36
 * Func test for migrate reschedule with pinned compute rpc
 * Make nova.compute.rpcapi.ComputeAPI.router a singleton
 * Add reno about nova-api eventlet monkey-patching and rabbitmq
@@ -20,6 +73,7 @@ CHANGES
 * doc: Fix a broken reference link
 * Fix rebuild of baremetal instance when vm\_state is ERROR
 * Remove descriptions of nonexistent hacking rules
+* rt: soften warning case in \_remove\_deleted\_instances\_allocations
 * doc: remove confusing docs about aggregate allocation ratios
 * Fix wrong assertions in unit tests
 * Fix 'has\_calls' method calls in unit tests
