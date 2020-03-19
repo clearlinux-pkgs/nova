@@ -6,7 +6,7 @@
 #
 Name     : nova
 Version  : 19.1.0
-Release  : 170
+Release  : 171
 URL      : https://tarballs.openstack.org/nova/nova-19.1.0.tar.gz
 Source0  : https://tarballs.openstack.org/nova/nova-19.1.0.tar.gz
 Source1  : nova.tmpfiles
@@ -211,6 +211,74 @@ python components for the nova package.
 Summary: python3 components for the nova package.
 Group: Default
 Requires: python3-core
+Provides: pypi(nova)
+Requires: pypi(babel)
+Requires: pypi(castellan)
+Requires: pypi(cryptography)
+Requires: pypi(cursive)
+Requires: pypi(decorator)
+Requires: pypi(eventlet)
+Requires: pypi(futurist)
+Requires: pypi(greenlet)
+Requires: pypi(iso8601)
+Requires: pypi(jinja2)
+Requires: pypi(jsonschema)
+Requires: pypi(keystoneauth1)
+Requires: pypi(keystonemiddleware)
+Requires: pypi(lxml)
+Requires: pypi(microversion_parse)
+Requires: pypi(netaddr)
+Requires: pypi(netifaces)
+Requires: pypi(openstacksdk)
+Requires: pypi(os_brick)
+Requires: pypi(os_resource_classes)
+Requires: pypi(os_service_types)
+Requires: pypi(os_traits)
+Requires: pypi(os_vif)
+Requires: pypi(os_win)
+Requires: pypi(os_xenapi)
+Requires: pypi(oslo.cache)
+Requires: pypi(oslo.concurrency)
+Requires: pypi(oslo.config)
+Requires: pypi(oslo.context)
+Requires: pypi(oslo.db)
+Requires: pypi(oslo.i18n)
+Requires: pypi(oslo.log)
+Requires: pypi(oslo.messaging)
+Requires: pypi(oslo.middleware)
+Requires: pypi(oslo.policy)
+Requires: pypi(oslo.privsep)
+Requires: pypi(oslo.reports)
+Requires: pypi(oslo.rootwrap)
+Requires: pypi(oslo.serialization)
+Requires: pypi(oslo.service)
+Requires: pypi(oslo.upgradecheck)
+Requires: pypi(oslo.utils)
+Requires: pypi(oslo.versionedobjects)
+Requires: pypi(paramiko)
+Requires: pypi(paste)
+Requires: pypi(pastedeploy)
+Requires: pypi(pbr)
+Requires: pypi(prettytable)
+Requires: pypi(psutil)
+Requires: pypi(pypowervm)
+Requires: pypi(python_cinderclient)
+Requires: pypi(python_dateutil)
+Requires: pypi(python_glanceclient)
+Requires: pypi(python_neutronclient)
+Requires: pypi(requests)
+Requires: pypi(retrying)
+Requires: pypi(rfc3986)
+Requires: pypi(routes)
+Requires: pypi(six)
+Requires: pypi(sqlalchemy)
+Requires: pypi(sqlalchemy_migrate)
+Requires: pypi(stevedore)
+Requires: pypi(taskflow)
+Requires: pypi(tooz)
+Requires: pypi(webob)
+Requires: pypi(websockify)
+Requires: pypi(zvmcloudconnector)
 
 %description python3
 python3 components for the nova package.
@@ -226,7 +294,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1582845549
+export SOURCE_DATE_EPOCH=1584644413
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
